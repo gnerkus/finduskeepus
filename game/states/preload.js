@@ -12,14 +12,16 @@ Preload.prototype = {
         this.asset.anchor.setTo(0.5, 0.5);
         this.load.setPreloadSprite(this.asset);
 
-        this.load.tilemap('map', 'assets/tilemaps/map.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.tilemap('meetup_map', 'assets/tilemaps/meetup_map.json', null, Phaser.Tilemap.TILED_JSON);
         this.load.image('blue', 'assets/textures/blue.png');
-        this.load.image('green', 'assets/textures/green.png');
-        this.load.image('red', 'assets/textures/red.png');
-        this.load.image('yellow', 'assets/textures/yellow.png');
         this.load.image('detector', 'assets/textures/detector.png');
-        this.load.image('tileset', 'assets/textures/tileset.png');
-        this.load.spritesheet('panel', 'assets/textures/panel_sheet.png', 48, 48, 4);
+        this.load.image('meetup_tileset', 'assets/textures/tileset.png');
+        this.load.image('player_one-select', 'assets/textures/player_one-select.png');
+        this.load.image('player_two-select', 'assets/textures/player_two-select.png');
+        this.load.spritesheet('arrow', 'assets/textures/arrow.png', 64, 64, 24);
+        this.load.spritesheet('player_one', 'assets/textures/player_one.png', 48, 48, 24);
+        this.load.spritesheet('player_two', 'assets/textures/player_two.png', 48, 48, 24);
+        this.load.spritesheet('yellow_enemy', 'assets/textures/yellow_enemy.png', 48, 48, 20);
 	    },
 	create: function () {
 		this.asset.cropEnabled = false;

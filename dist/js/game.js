@@ -3,7 +3,7 @@
 
 // global variables
 window.onload = function () {
-	var game = new Phaser.Game(432, 432, Phaser.AUTO, 'gem-get');
+	var game = new Phaser.Game(1024, 640, Phaser.AUTO, 'gem-get');
 
 	// Game States
 	game.state.add('boot', require('./states/boot'));
@@ -92,94 +92,201 @@ module.exports = Menu;
 },{}],5:[function(require,module,exports){
 'use strict';
 var dir = ['right', 'down', 'left', 'up'];
+var directionToAngle = {
+    'right': 0,
+    'down': 90,
+    'left': 180,
+    'up': 270
+};
 var map;
 var layer;
 var player;
+var playerTwo;
+var enemy;
 var detector;
-var coin;
-var coinDetector;
+var detectorTwo;
+var enemyDetector;
 var arrows;
+var topLeftArrows;
+var topArrows;
+var topRightArrows;
+var markers;
 
 function Play() {
-
+    
 }
 
 Play.prototype = {
 	create: function () {
         this.game.physics.startSystem(Phaser.Physics.ARCADE); // 2 -- add physics
 
-        map = this.game.add.tilemap('map');
+        map = this.game.add.tilemap('meetup_map');
 
-        map.addTilesetImage('tileset');
+        map.addTilesetImage('meetup_tileset');
 
         layer = map.createLayer('Floor');
 
-        layer.resizeWorld();
+        // layer.resizeWorld();
 
+        ////////// REGULAR ARROWS ////////////////
         arrows = this.game.add.group();
         arrows.enableBody = true;
 
-        map.createFromObjects('Arrows', 1, 'panel', 0, true, false, arrows);
+        map.createFromObjects('Regular-Arrows', 10, 'arrow', 0, true, false, arrows);
 
         arrows.forEach(function (panel) {
-            panel.animations.add('right', [0]);
-            panel.animations.add('down', [1]);
-            panel.animations.add('left', [2]);
-            panel.animations.add('up', [3]);
-            panel.animations.play(dir[panel.dirCode]);
-            panel.body.setSize(4, 4, 22, 22);
-						panel.canClick = true;
-            panel.direction = {x: 1, y: 0};
+            panel.dirList = ['right', 'down', 'left', 'up'];
+            panel.animations.add('right', [0, 1, 2, 3, 4, 5]);
+            panel.animations.add('down', [6, 7, 8, 9, 10, 11]);
+            panel.animations.add('left', [12, 13, 14, 15, 16, 17]);
+            panel.animations.add('up', [18, 19, 20, 21, 22, 23]);
             panel.dirCode = 0;
+            panel.animations.play(panel.dirList[panel.dirCode]);
+            panel.body.setSize(8, 8, 28, 28);
+            panel.canClick = true;
             panel.inputEnabled = true;
             panel.events.onInputDown.add(this.rotate, this);
-						panel.timer = this.game.time.create(false);
+            panel.marker = null;
+			panel.timer = this.game.time.create(false);
           }, this, false);
 
-        player = this.game.add.sprite(24, 24, 'blue');
+
+        ////////// TOP_LEFT ARROWS ////////////////
+        topLeftArrows = this.game.add.group();
+        topLeftArrows.enableBody = true;
+
+        map.createFromObjects('Top-Left-Arrows', 2, 'arrow', 0, true, false, topLeftArrows);
+
+        topLeftArrows.forEach(function (panel) {
+            panel.dirList = ['right', 'down'];
+            panel.animations.add('right', [0, 1, 2, 3, 4, 5]);
+            panel.animations.add('down', [6, 7, 8, 9, 10, 11]);
+            panel.animations.add('left', [12, 13, 14, 15, 16, 17]);
+            panel.animations.add('up', [18, 19, 20, 21, 22, 23]);
+            panel.dirCode = 0;
+            panel.animations.play(panel.dirList[panel.dirCode]);
+            panel.body.setSize(8, 8, 28, 28);
+            panel.canClick = true;
+            panel.inputEnabled = true;
+            panel.events.onInputDown.add(this.rotate, this);
+            panel.marker = null;
+            panel.timer = this.game.time.create(false);
+          }, this, false);
+
+
+        ////////// TOP ARROWS ////////////////
+        topArrows = this.game.add.group();
+        topArrows.enableBody = true;
+
+        map.createFromObjects('Top-Arrows', 7, 'arrow', 0, true, false, topArrows);
+
+        topArrows.forEach(function (panel) {
+            panel.dirList = ['right', 'down', 'left'];
+            panel.animations.add('right', [0, 1, 2, 3, 4, 5]);
+            panel.animations.add('down', [6, 7, 8, 9, 10, 11]);
+            panel.animations.add('left', [12, 13, 14, 15, 16, 17]);
+            panel.animations.add('up', [18, 19, 20, 21, 22, 23]);
+            panel.dirCode = 0;
+            panel.animations.play(panel.dirList[panel.dirCode]);
+            panel.body.setSize(8, 8, 28, 28);
+            panel.canClick = true;
+            panel.inputEnabled = true;
+            panel.events.onInputDown.add(this.rotate, this);
+            panel.marker = null;
+            panel.timer = this.game.time.create(false);
+          }, this, false);
+
+
+        ////////// TOP RIGHT ARROWS ////////////////
+        topRightArrows = this.game.add.group();
+        topRightArrows.enableBody = true;
+
+        map.createFromObjects('Top-Right-Arrows', 3, 'arrow', 0, true, false, topRightArrows);
+
+        topRightArrows.forEach(function (panel) {
+            panel.dirList = ['left', 'down'];
+            panel.animations.add('right', [0, 1, 2, 3, 4, 5]);
+            panel.animations.add('down', [6, 7, 8, 9, 10, 11]);
+            panel.animations.add('left', [12, 13, 14, 15, 16, 17]);
+            panel.animations.add('up', [18, 19, 20, 21, 22, 23]);
+            panel.dirCode = 0;
+            panel.animations.play(panel.dirList[panel.dirCode]);
+            panel.body.setSize(8, 8, 28, 28);
+            panel.canClick = true;
+            panel.inputEnabled = true;
+            panel.events.onInputDown.add(this.rotate, this);
+            panel.marker = null;
+            panel.timer = this.game.time.create(false);
+          }, this, false);
+
+        player = this.game.add.sprite(32, 32, 'player_one');
         player.anchor.setTo(0.5, 0.5);
         this.game.physics.enable(player);
         player.angle = 0;
+        player.animations.add('right', [0, 1, 2, 3, 4, 5]);
+        player.animations.add('down', [6, 7, 8, 9, 10, 11]);
+        player.animations.add('left', [12, 13, 14, 15, 16, 17]);
+        player.animations.add('up', [18, 19, 20, 21, 22, 23]);
+        player.animations.play(dir[0], 6, true);
 
         detector = this.game.add.sprite(player.x, player.y, 'detector');
         this.game.physics.enable(detector);
         detector.player = player;
         detector.angle = player.angle;
 
-        coin = this.game.add.sprite(216, 216, 'yellow');
-        coin.anchor.setTo(0.5, 0.5);
-        this.game.physics.enable(coin);
-        coin.angle = 0;
 
-        coinDetector = this.game.add.sprite(coin.x, coin.y, 'detector');
-        this.game.physics.enable(coinDetector);
-        coinDetector.player = coin;
-        coinDetector.angle = coin.angle;
+
+        playerTwo = this.game.add.sprite(928, 32, 'player_two');
+        playerTwo.anchor.setTo(0.5, 0.5);
+        this.game.physics.enable(playerTwo);
+        playerTwo.angle = 180;
+        playerTwo.animations.add('right', [0, 1, 2, 3, 4, 5]);
+        playerTwo.animations.add('down', [6, 7, 8, 9, 10, 11]);
+        playerTwo.animations.add('left', [12, 13, 14, 15, 16, 17]);
+        playerTwo.animations.add('up', [18, 19, 20, 21, 22, 23]);
+        playerTwo.animations.play(dir[2], 6, true);
+
+        detectorTwo = this.game.add.sprite(playerTwo.x, playerTwo.y, 'detector');
+        this.game.physics.enable(detectorTwo);
+        detectorTwo.player = playerTwo;
+        detectorTwo.angle = playerTwo.angle;
+
+        markers = this.game.add.group();
 	    },
 	update: function () {
-        this.game.physics.arcade.velocityFromAngle(player.angle, 48, player.body.velocity);
-        this.game.physics.arcade.velocityFromAngle(detector.angle, 48, detector.body.velocity);
+        this.game.physics.arcade.velocityFromAngle(player.angle, 64, player.body.velocity);
+        this.game.physics.arcade.velocityFromAngle(detector.angle, 64, detector.body.velocity);
+
+        this.game.physics.arcade.velocityFromAngle(playerTwo.angle, 64, playerTwo.body.velocity);
+        this.game.physics.arcade.velocityFromAngle(detectorTwo.angle, 64, detectorTwo.body.velocity);
+
         this.game.physics.arcade.overlap(detector, arrows, this.detectorOnPanel, null, this);
+        this.game.physics.arcade.overlap(detector, topLeftArrows, this.detectorOnPanel, null, this);
+        this.game.physics.arcade.overlap(detector, topArrows, this.detectorOnPanel, null, this);
+        this.game.physics.arcade.overlap(detector, topRightArrows, this.detectorOnPanel, null, this);
 
-        this.game.physics.arcade.velocityFromAngle(coin.angle, 48, coin.body.velocity);
-        this.game.physics.arcade.velocityFromAngle(coinDetector.angle, 48, coinDetector.body.velocity);
-        this.game.physics.arcade.overlap(coinDetector, arrows, this.detectorOnPanel, null, this);
+        this.game.physics.arcade.overlap(detectorTwo, arrows, this.detectorOnPanel, null, this);
+        this.game.physics.arcade.overlap(detectorTwo, topLeftArrows, this.detectorOnPanel, null, this);
+        this.game.physics.arcade.overlap(detectorTwo, topArrows, this.detectorOnPanel, null, this);
+        this.game.physics.arcade.overlap(detectorTwo, topRightArrows, this.detectorOnPanel, null, this);
 
-				this.game.physics.arcade.collide(player, coin, this.collisionHandler, null, this);
+		this.game.physics.arcade.collide(player, playerTwo, this.collisionHandler, null, this);
 
 	    },
 	detectorOnPanel: function (detectr, panel) {
-        detectr.player.angle = panel.dirCode * 90;
-        detectr.angle = panel.dirCode * 90;
+        detectr.player.angle = directionToAngle[panel.dirList[panel.dirCode]];
+        detectr.angle = directionToAngle[panel.dirList[panel.dirCode]];
+        detectr.player.animations.play(panel.dirList[panel.dirCode], 6, true);
       },
 
   rotate: function (panel) {
 		  if (panel.canClick) {
-				panel.dirCode = (panel.dirCode >= 3 ? 0 : panel.dirCode + 1);
-				panel.animations.play(dir[panel.dirCode]);
+				panel.dirCode = (panel.dirCode >= panel.dirList.length - 1 ? 0 : panel.dirCode + 1);
+				panel.animations.play(panel.dirList[panel.dirCode]);
 				panel.canClick = false;
-				panel.timer.add(Phaser.Timer.SECOND, function () { panel.canClick = true; }, this);
+				panel.timer.add(Phaser.Timer.SECOND * 0.5, function () { panel.canClick = true; panel.marker.destroy(); }, this);
 				panel.timer.start();
+                panel.marker = markers.create(panel.x, panel.y, 'player_one-select');
 			}
 
     },
@@ -205,14 +312,16 @@ Preload.prototype = {
         this.asset.anchor.setTo(0.5, 0.5);
         this.load.setPreloadSprite(this.asset);
 
-        this.load.tilemap('map', 'assets/tilemaps/map.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.tilemap('meetup_map', 'assets/tilemaps/meetup_map.json', null, Phaser.Tilemap.TILED_JSON);
         this.load.image('blue', 'assets/textures/blue.png');
-        this.load.image('green', 'assets/textures/green.png');
-        this.load.image('red', 'assets/textures/red.png');
-        this.load.image('yellow', 'assets/textures/yellow.png');
         this.load.image('detector', 'assets/textures/detector.png');
-        this.load.image('tileset', 'assets/textures/tileset.png');
-        this.load.spritesheet('panel', 'assets/textures/panel_sheet.png', 48, 48, 4);
+        this.load.image('meetup_tileset', 'assets/textures/tileset.png');
+        this.load.image('player_one-select', 'assets/textures/player_one-select.png');
+        this.load.image('player_two-select', 'assets/textures/player_two-select.png');
+        this.load.spritesheet('arrow', 'assets/textures/arrow.png', 64, 64, 24);
+        this.load.spritesheet('player_one', 'assets/textures/player_one.png', 48, 48, 24);
+        this.load.spritesheet('player_two', 'assets/textures/player_two.png', 48, 48, 24);
+        this.load.spritesheet('yellow_enemy', 'assets/textures/yellow_enemy.png', 48, 48, 20);
 	    },
 	create: function () {
 		this.asset.cropEnabled = false;
