@@ -13,6 +13,16 @@ function Panel (game, x, y, frame) {
     console.log('Added input listener to panel.');
     console.log(this);
 
+    this.animations.add('right', [0, 1, 2, 3, 4, 5]);
+    this.animations.add('down', [6, 7, 8, 9, 10, 11]);
+    this.animations.add('left', [12, 13, 14, 15, 16, 17]);
+    this.animations.add('up', [18, 19, 20, 21, 22, 23]);
+    this.dirList = ['right', 'down', 'left', 'up'];
+    this.body.setSize(8, 8, 28, 28);
+    this.canClick = true;
+    this.marker = null;
+    this.timer = this.game.time.create(false);
+
     this.state = {};
 
     // A list of the components this entity contains

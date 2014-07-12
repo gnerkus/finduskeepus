@@ -15,6 +15,7 @@ var RunnerBehaviour = (function () {
                 var runnerSpeed = this.state.runner.speed;
 
                 this.game.physics.arcade.velocityFromAngle(runnerDirection, runnerSpeed, this.body.velocity);
+                this.game.physics.arcade.velocityFromAngle(runnerDirection, runnerSpeed, this.detector.body.velocity);
             }
         },
 

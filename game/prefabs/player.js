@@ -5,8 +5,13 @@ var bulletBehaviour = require('./../behaviours/runner');
 function Player (game, x, y, frame) {
     Phaser.Sprite.call(this, game, x, y, 'player_one', frame);
     console.log('Called super class');
+    this.anchor.setTo(0.5, 0.5);
 
-    this.game.physics.arcade.enableBody(this);
+    this.detector = this.game.add.sprite(x, y, 'detector');
+    this.game.physics.arcade.enable(this.detector);
+    this.detector.player = this;
+
+    this.game.physics.arcade.enable(this);
     console.log('Physics enabled for player.');
 
     this.state = {};
