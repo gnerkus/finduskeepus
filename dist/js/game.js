@@ -16,6 +16,7 @@ var RunnerBehaviour = (function () {
                 var runnerSpeed = this.state.runner.speed;
 
                 this.game.physics.arcade.velocityFromAngle(runnerDirection, runnerSpeed, this.body.velocity);
+                this.game.physics.arcade.velocityFromAngle(runnerDirection, runnerSpeed, this.detector.body.velocity);
             }
         },
 
@@ -33,6 +34,8 @@ var RunnerBehaviour = (function () {
 
             this.state.runner.direction = instruction.direction;
             this.state.runner.speed = instruction.speed;
+
+            this.animations.play(this.dirList[this.state.runner.direction], 15, true);
         }
     };
 
@@ -61,6 +64,8 @@ var SignpostBehaviour = (function () {
         methods: {
             addDirections: function (dirArray) {
                 this.state.signpost.directions = this.state.signpost.directions.concat(dirArray);
+                this.state.signpost.direction = this.state.signpost.directions[0];
+                this.animations.play(this.dirList[this.state.signpost.direction], 30, false);
             }
         },
 
@@ -85,7 +90,8 @@ var SignpostBehaviour = (function () {
                     var nextState = index >= directions.length - 1 ? 0 : index + 1;
                     console.log(directions.length);
                     console.log(nextState);
-                    this.state.signpost.direction = nextState;
+                    this.state.signpost.direction = directions[nextState];
+                    this.animations.play(this.dirList[this.state.signpost.direction], 30, false);
                 }
             }
         }
@@ -100,7 +106,7 @@ module.exports = SignpostBehaviour;
 
 // global variables
 window.onload = function () {
-	var game = new Phaser.Game(1024, 640, Phaser.AUTO, 'meetup');
+	var game = new Phaser.Game(960, 576, Phaser.AUTO, 'meetup');
 
 	// Game States
 	game.state.add('boot', require('./states/boot'));
@@ -127,6 +133,13 @@ function Panel (game, x, y, frame) {
     console.log('Added input listener to panel.');
     console.log(this);
 
+    this.animations.add('down', [0, 1, 2, 3, 4, 5]);
+    this.animations.add('left', [6, 7, 8, 9, 10, 11]);
+    this.animations.add('up', [12, 13, 14, 15, 16, 17]);
+    this.animations.add('right', [18, 19, 20, 21, 22, 23]);
+    this.dirList = ['right', 'down', 'left', 'up'];
+    this.body.setSize(4, 4, 30, 30);
+
     this.state = {};
 
     // A list of the components this entity contains
@@ -148,7 +161,6 @@ function Panel (game, x, y, frame) {
 
     this.addComponent(signpostBehaviour);
     console.log('Added signpost component.');
-
 }
 
 Panel.prototype = Object.create(Phaser.Sprite.prototype);
@@ -162,10 +174,10 @@ Panel.prototype.update = function () {
 
 Panel.prototype.addComponent = function (componentObject) {
     this.components.push(componentObject.name);
-    this.state[componentObject.name] = componentObject.attribs;
+    this.state[componentObject.name] = Object.create(componentObject.attribs);
 
     for (var behaviourIndex in componentObject.behaviour) {
-        var behaviour = componentObject.behaviour[behaviourIndex];
+        var behaviour = Object.create(componentObject.behaviour[behaviourIndex]);
         this.behaviour[behaviourIndex] = behaviour;
     }
 
@@ -215,9 +227,20 @@ var bulletBehaviour = require('./../behaviours/runner');
 function Player (game, x, y, frame) {
     Phaser.Sprite.call(this, game, x, y, 'player_one', frame);
     console.log('Called super class');
+    this.anchor.setTo(0.5, 0.5);
 
-    this.game.physics.arcade.enableBody(this);
+    this.detector = this.game.add.sprite(x, y, 'detector');
+    this.game.physics.arcade.enable(this.detector);
+    this.detector.player = this;
+
+    this.game.physics.arcade.enable(this);
     console.log('Physics enabled for player.');
+
+    this.animations.add('right', [0, 1, 2, 3, 4, 5, 6, 7]);
+    this.animations.add('down', [8, 9, 10, 11, 12, 13, 14, 15]);
+    this.animations.add('left', [16, 17, 18, 19, 20, 21, 22, 23]);
+    this.animations.add('up', [24, 25, 26, 27, 28, 29, 30, 31]);
+    this.dirList = ['right', 'down', 'left', 'up'];
 
     this.state = {};
 
@@ -247,10 +270,10 @@ Player.prototype.update = function () {
 
 Player.prototype.addComponent = function (componentObject) {
     this.components.push(componentObject.name);
-    this.state[componentObject.name] = componentObject.attribs;
+    this.state[componentObject.name] = Object.create(componentObject.attribs);
 
     for (var behaviourIndex in componentObject.behaviour) {
-    	var behaviour = componentObject.behaviour[behaviourIndex];
+    	var behaviour = Object.create(componentObject.behaviour[behaviourIndex]);
     	this.behaviour[behaviourIndex] = behaviour;
     }
 
@@ -377,30 +400,47 @@ Play.prototype = {
         this.game.physics.startSystem(Phaser.Physics.ARCADE); // 2 -- add physics
         console.log('Added physics to game.');
 
-        this.panel = new Panel(this.game, this.game.width / 2, this.game.height / 2);
-        this.panel.addDirections ([0, 1, 2, 3]);
-        console.log('Added panel to game.');
-        console.log(this.panel);
+        this.map = this.game.add.tilemap('meetup_map');
+        this.map.addTilesetImage('meetup_tileset');
+        this.layer = this.map.createLayer('Floor');
+        this.layer.resizeWorld();
 
-        this.game.add.existing(this.panel);
+        this.detectors = this.game.add.group(); 
 
-        this.player = new Player(this.game, this.game.width / 2, 32);
+        this.arrowPanels = this.game.add.group();
+        this.map.createFromObjects('Arrows', 10, 'arrow', null, true, false, this.arrowPanels, Panel, true);
+        this.arrowPanels.forEach(function (panel) {
+           panel.addDirections(panel.directions);
+        });
+
+        this.player = new Player(this.game, 96, 96);
         console.log('Added player to game.');
         console.log(this.player);
 
         this.game.add.existing(this.player);
 
+        this.detectors.add(this.player.detector);
+        console.log(this.detectors);
+
+        this.playerTwo = new Player(this.game, 736, 480);
+        console.log('Added player to game.');
+        console.log(this.player);
+
+        this.game.add.existing(this.playerTwo);
+
+        this.detectors.add(this.playerTwo.detector);
+        console.log(this.detectors);
 
 	    },
 	update: function () {
-        this.game.physics.arcade.overlap(this.player, this.panel, this.shareBehaviours, null, this);
+        this.game.physics.arcade.overlap(this.detectors, this.arrowPanels, this.shareBehaviours, null, this);
 
 	},
 
-    shareBehaviours: function (player, panel) {
-        player.changeState(panel.getBehaviour());
-        console.log(this.panel);
-        console.log(this.player);
+    shareBehaviours: function (detector, panel) {
+        detector.player.changeState(panel.getBehaviour());
+        console.log(panel);
+        console.log(detector);
     }
 };
 
@@ -421,16 +461,12 @@ Preload.prototype = {
         this.asset.anchor.setTo(0.5, 0.5);
         this.load.setPreloadSprite(this.asset);
 
-        this.load.tilemap('meetup_map', 'assets/tilemaps/meetup_map.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.tilemap('meetup_map', 'assets/tilemaps/meetup_game.json', null, Phaser.Tilemap.TILED_JSON);
         this.load.image('blue', 'assets/textures/blue.png');
         this.load.image('detector', 'assets/textures/detector.png');
         this.load.image('meetup_tileset', 'assets/textures/tileset.png');
-        this.load.image('player_one-select', 'assets/textures/player_one-select.png');
-        this.load.image('player_two-select', 'assets/textures/player_two-select.png');
-        this.load.spritesheet('arrow', 'assets/textures/arrow.png', 64, 64, 24);
-        this.load.spritesheet('player_one', 'assets/textures/player_one.png', 48, 48, 24);
-        this.load.spritesheet('player_two', 'assets/textures/player_two.png', 48, 48, 24);
-        this.load.spritesheet('yellow_enemy', 'assets/textures/yellow_enemy.png', 48, 48, 20);
+        this.load.spritesheet('arrow', 'assets/textures/arrow_panel.png', 64, 64, 24);
+        this.load.spritesheet('player_one', 'assets/textures/player_one.png', 64, 64, 32);
 	    },
 	create: function () {
 		this.asset.cropEnabled = false;

@@ -14,6 +14,12 @@ function Player (game, x, y, frame) {
     this.game.physics.arcade.enable(this);
     console.log('Physics enabled for player.');
 
+    this.animations.add('right', [0, 1, 2, 3, 4, 5, 6, 7]);
+    this.animations.add('down', [8, 9, 10, 11, 12, 13, 14, 15]);
+    this.animations.add('left', [16, 17, 18, 19, 20, 21, 22, 23]);
+    this.animations.add('up', [24, 25, 26, 27, 28, 29, 30, 31]);
+    this.dirList = ['right', 'down', 'left', 'up'];
+
     this.state = {};
 
     // A list of the components this entity contains
@@ -42,10 +48,10 @@ Player.prototype.update = function () {
 
 Player.prototype.addComponent = function (componentObject) {
     this.components.push(componentObject.name);
-    this.state[componentObject.name] = componentObject.attribs;
+    this.state[componentObject.name] = Object.create(componentObject.attribs);
 
     for (var behaviourIndex in componentObject.behaviour) {
-    	var behaviour = componentObject.behaviour[behaviourIndex];
+    	var behaviour = Object.create(componentObject.behaviour[behaviourIndex]);
     	this.behaviour[behaviourIndex] = behaviour;
     }
 

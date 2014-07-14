@@ -33,6 +33,8 @@ var RunnerBehaviour = (function () {
 
             this.state.runner.direction = instruction.direction;
             this.state.runner.speed = instruction.speed;
+
+            this.animations.play(this.dirList[this.state.runner.direction], 15, true);
         }
     };
 

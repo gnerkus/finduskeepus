@@ -13,15 +13,12 @@ function Panel (game, x, y, frame) {
     console.log('Added input listener to panel.');
     console.log(this);
 
-    this.animations.add('right', [0, 1, 2, 3, 4, 5]);
-    this.animations.add('down', [6, 7, 8, 9, 10, 11]);
-    this.animations.add('left', [12, 13, 14, 15, 16, 17]);
-    this.animations.add('up', [18, 19, 20, 21, 22, 23]);
+    this.animations.add('down', [0, 1, 2, 3, 4, 5]);
+    this.animations.add('left', [6, 7, 8, 9, 10, 11]);
+    this.animations.add('up', [12, 13, 14, 15, 16, 17]);
+    this.animations.add('right', [18, 19, 20, 21, 22, 23]);
     this.dirList = ['right', 'down', 'left', 'up'];
-    this.body.setSize(8, 8, 28, 28);
-    this.canClick = true;
-    this.marker = null;
-    this.timer = this.game.time.create(false);
+    this.body.setSize(4, 4, 30, 30);
 
     this.state = {};
 
@@ -44,7 +41,6 @@ function Panel (game, x, y, frame) {
 
     this.addComponent(signpostBehaviour);
     console.log('Added signpost component.');
-
 }
 
 Panel.prototype = Object.create(Phaser.Sprite.prototype);
@@ -58,10 +54,10 @@ Panel.prototype.update = function () {
 
 Panel.prototype.addComponent = function (componentObject) {
     this.components.push(componentObject.name);
-    this.state[componentObject.name] = componentObject.attribs;
+    this.state[componentObject.name] = Object.create(componentObject.attribs);
 
     for (var behaviourIndex in componentObject.behaviour) {
-        var behaviour = componentObject.behaviour[behaviourIndex];
+        var behaviour = Object.create(componentObject.behaviour[behaviourIndex]);
         this.behaviour[behaviourIndex] = behaviour;
     }
 

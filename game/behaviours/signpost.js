@@ -18,6 +18,8 @@ var SignpostBehaviour = (function () {
         methods: {
             addDirections: function (dirArray) {
                 this.state.signpost.directions = this.state.signpost.directions.concat(dirArray);
+                this.state.signpost.direction = this.state.signpost.directions[0];
+                this.animations.play(this.dirList[this.state.signpost.direction], 30, false);
             }
         },
 
@@ -42,7 +44,8 @@ var SignpostBehaviour = (function () {
                     var nextState = index >= directions.length - 1 ? 0 : index + 1;
                     console.log(directions.length);
                     console.log(nextState);
-                    this.state.signpost.direction = nextState;
+                    this.state.signpost.direction = directions[nextState];
+                    this.animations.play(this.dirList[this.state.signpost.direction], 30, false);
                 }
             }
         }
