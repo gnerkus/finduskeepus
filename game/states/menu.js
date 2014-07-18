@@ -1,4 +1,7 @@
 'use strict';
+
+// * move to LevelMenu when user clicks 'play'
+
 function Menu() {
 
 }

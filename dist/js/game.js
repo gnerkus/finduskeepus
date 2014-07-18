@@ -107,17 +107,109 @@ module.exports = SignpostBehaviour;
 // global variables
 window.onload = function () {
 	var game = new Phaser.Game(960, 576, Phaser.AUTO, 'meetup');
+    
 
 	// Game States
 	game.state.add('boot', require('./states/boot'));
-	game.state.add('gameover', require('./states/gameover'));
+	game.state.add('level-menu', require('./states/level-menu'));
 	game.state.add('menu', require('./states/menu'));
 	game.state.add('play', require('./states/play'));
 	game.state.add('preload', require('./states/preload'));
+	game.state.add('success', require('./states/success'));
 
 	game.state.start('boot');
+
 };
-},{"./states/boot":6,"./states/gameover":7,"./states/menu":8,"./states/play":9,"./states/preload":10}],4:[function(require,module,exports){
+},{"./states/boot":7,"./states/level-menu":8,"./states/menu":9,"./states/play":10,"./states/preload":11,"./states/success":12}],4:[function(require,module,exports){
+'use strict';
+
+var bulletBehaviour = require('./../behaviours/runner');
+
+function BasicEnemy (game, x, y, frame) {
+    Phaser.Sprite.call(this, game, x, y, 'basic_enemy', frame);
+    console.log('Called BasicEnemy super class');
+    this.anchor.setTo(0.5, 0.5);
+
+    this.detector = this.game.add.sprite(x, y, 'detector');
+    this.game.physics.arcade.enable(this.detector);
+    this.detector.player = this;
+
+    this.game.physics.arcade.enable(this);
+    console.log('Physics enabled for enemy.');
+
+    this.animations.add('right', [0, 1, 2, 3, 4, 5, 6]);
+    this.animations.add('down', [7, 8, 9, 10, 11, 12, 13]);
+    this.animations.add('left', [14, 15, 16, 17, 18, 19, 20]);
+    this.animations.add('up', [21, 22, 23, 24, 25, 26, 27]);
+    this.dirList = ['right', 'down', 'left', 'up'];
+
+    this.state = {};
+
+    // A list of the components this entity contains
+    this.components = [];
+
+    this.componentMethods = [];
+
+    // Instructions to give any entity that collides with this entity
+    // This behaviour object will be maintained by the entity's components
+    this.behaviour = {
+        
+    };
+
+    this.addComponent(bulletBehaviour);
+    console.log('Added runner component.');
+}
+
+BasicEnemy.prototype = Object.create(Phaser.Sprite.prototype);
+BasicEnemy.prototype.constructor = BasicEnemy;
+
+BasicEnemy.prototype.update = function () {
+    for (var index in this.componentMethods) {
+        this[this.componentMethods[index]].call(this);
+    }
+};
+
+BasicEnemy.prototype.addComponent = function (componentObject) {
+    this.components.push(componentObject.name);
+    this.state[componentObject.name] = Object.create(componentObject.attribs);
+
+    for (var behaviourIndex in componentObject.behaviour) {
+    	var behaviour = Object.create(componentObject.behaviour[behaviourIndex]);
+    	this.behaviour[behaviourIndex] = behaviour;
+    }
+
+    for (var methodIndex in componentObject.methods) {
+    	var method = componentObject.methods[methodIndex];
+    	this[methodIndex] = method.bind(this);
+    }
+
+    for (var updateIndex in componentObject.updateMethods) {
+        var updateMethod = componentObject.updateMethods[updateIndex];
+        this[updateIndex] = updateMethod.bind(this);
+        this.componentMethods.push(updateIndex);
+    }
+
+    this['handle' + componentObject.name] = componentObject.handler.bind(this);
+};
+
+BasicEnemy.prototype.getBehaviour = function () {
+    return this.behaviour;
+};
+
+BasicEnemy.prototype.changeState = function (behaviour) {
+    for (var behaviourIndex in behaviour) {
+        console.log('Found ' + behaviourIndex);
+        if (this.components.indexOf(behaviourIndex) >= 0) {
+            console.log('BasicEnemy contains ' + behaviourIndex);
+            console.log(behaviour[behaviourIndex]);
+            console.log(this['handle' + behaviourIndex]);
+            this['handle' + behaviourIndex](behaviour[behaviourIndex]);
+        }
+    }
+};
+
+module.exports = BasicEnemy;
+},{"./../behaviours/runner":1}],5:[function(require,module,exports){
 'use strict';
 
 var signpostBehaviour = require('./../behaviours/signpost');
@@ -219,7 +311,7 @@ Panel.prototype.nextDirection = function () {
 module.exports = Panel;
 
 
-},{"./../behaviours/signpost":2}],5:[function(require,module,exports){
+},{"./../behaviours/signpost":2}],6:[function(require,module,exports){
 'use strict';
 
 var bulletBehaviour = require('./../behaviours/runner');
@@ -310,7 +402,7 @@ Player.prototype.changeState = function (behaviour) {
 module.exports = Player;
 
 
-},{"./../behaviours/runner":1}],6:[function(require,module,exports){
+},{"./../behaviours/runner":1}],7:[function(require,module,exports){
 'use strict';
 
 function Boot() {
@@ -322,46 +414,72 @@ Boot.prototype = {
 		this.load.image('preloader', 'assets/preloader.gif');
 	},
 	create: function () {
+		this.game.meetupLevels = [
+            {
+                map: 'meetup_map',
+                asset: 'assets/tilemaps/meetup_game.json',
+                tileset: 'meetup_tileset',
+                layers: {
+                    environment: 'Floor',
+                    arrows: 'Arrows'
+                },
+                complete: false,
+                stars: 0
+            },
+
+            {
+                map: 'meetup_map_2',
+                asset: 'assets/tilemaps/meetup_game_2.json',
+                tileset: 'meetup_tileset',
+                layers: {
+                    environment: 'Floor',
+                    arrows: 'Arrows'
+                },
+                complete: false,
+                stars: 0
+            }
+		];
+        this.game.currentLevel = 1;
+
 		this.game.input.maxPointers = 1;
 		this.game.state.start('preload');
+
+		console.log(this.game.meetupLevels);
+		console.log(this.game.meetupLevels[this.game.currentLevel - 1]);
 	}
 };
 
 module.exports = Boot;
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
-function GameOver() {
+// * move to Play when user selects a level
+
+function LevelMenu () {
 
 }
 
-GameOver.prototype = {
+LevelMenu.prototype = {
 	preload: function () {
 
 	},
+
 	create: function () {
-		var style = {font: '65px Arial', fill: '#ffffff', align: 'center'};
-		this.titleText = this.game.add.text(this.game.world.centerX, 100, 'Game Over!', style);
-		this.titleText.anchor.setTo(0.5, 0.5);
 
-		this.congratsText = this.game.add.text(this.game.world.centerX, 200, 'You Win!', style);
-		this.congratsText.anchor.setTo(0.5, 0.5);
-
-		this.instructionText = this.game.add.text(this.game.world.centerX, 300, 'Click to play again!', style);
-		this.instructionText.anchor.setTo(0.5, 0.5);
 	},
+
 	update: function () {
-		if (this.game.input.activePointer.justPressed()) {
-			this.game.state.start('play');
-		}
+
 	}
 };
 
-module.exports = GameOver;
-
-},{}],8:[function(require,module,exports){
+module.exports = LevelMenu;
+},{}],9:[function(require,module,exports){
 'use strict';
+
+// * move to LevelMenu when user clicks 'play'
+
 function Menu() {
 
 }
@@ -385,10 +503,16 @@ Menu.prototype = {
 
 module.exports = Menu;
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
+
+// * move to Success when user causes both players to collide with themselves
+// * show pauseOverlay when 'pause' button is clicked
+// * move to Play when user causes a player to collide with an enemy. 
+
 var Panel = require('../prefabs/panel');
 var Player = require('../prefabs/player');
+var BasicEnemy = require('../prefabs/basicEnemy');
 
 
 function Play() {
@@ -400,8 +524,8 @@ Play.prototype = {
         this.game.physics.startSystem(Phaser.Physics.ARCADE); // 2 -- add physics
         console.log('Added physics to game.');
 
-        this.map = this.game.add.tilemap('meetup_map');
-        this.map.addTilesetImage('meetup_tileset');
+        this.map = this.game.add.tilemap(this.game.meetupLevels[this.game.currentLevel - 1].map);
+        this.map.addTilesetImage(this.game.meetupLevels[this.game.currentLevel - 1].tileset);
         this.layer = this.map.createLayer('Floor');
         this.layer.resizeWorld();
 
@@ -431,23 +555,44 @@ Play.prototype = {
         this.detectors.add(this.playerTwo.detector);
         console.log(this.detectors);
 
+        this.enemy = new BasicEnemy(this.game, 352, 480);
+        console.log('Added enemy to game.');
+        console.log(this.enemy);
+
+        this.game.add.existing(this.enemy);
+
+        this.detectors.add(this.enemy.detector);
+        console.log(this.detectors);
+
 	    },
 	update: function () {
         this.game.physics.arcade.overlap(this.detectors, this.arrowPanels, this.shareBehaviours, null, this);
-
+        this.game.physics.arcade.collide(this.player, this.playerTwo, this.levelClear, null, this);
+        this.game.physics.arcade.collide(this.player, this.enemy, this.levelFail, null, this);
+        this.game.physics.arcade.collide(this.playerTwo, this.enemy, this.levelFail, null, this);
 	},
 
     shareBehaviours: function (detector, panel) {
         detector.player.changeState(panel.getBehaviour());
         console.log(panel);
         console.log(detector);
+    },
+
+    levelClear: function (playerOne, playerTwo) {
+        this.game.state.start('success');
+    },
+
+    levelFail: function (player, enemy) {
+        this.game.state.start('play');
     }
 };
 
 module.exports = Play;
 
-},{"../prefabs/panel":4,"../prefabs/player":5}],10:[function(require,module,exports){
+},{"../prefabs/basicEnemy":4,"../prefabs/panel":5,"../prefabs/player":6}],11:[function(require,module,exports){
 'use strict';
+
+// * move to Menu after assets have been loaded.
 
 function Preload() {
 	this.asset = null;
@@ -456,17 +601,31 @@ function Preload() {
 
 Preload.prototype = {
 	preload: function () {
+		console.log(this.game.meetupLevels);
+		console.log(this.game.currentLevel);
+
         this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
         this.asset = this.add.sprite(this.width / 2, this.height / 2, 'preloader');
         this.asset.anchor.setTo(0.5, 0.5);
         this.load.setPreloadSprite(this.asset);
 
         this.load.tilemap('meetup_map', 'assets/tilemaps/meetup_game.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.tilemap('meetup_map_2', 'assets/tilemaps/meetup_game_2.json', null, Phaser.Tilemap.TILED_JSON);
         this.load.image('blue', 'assets/textures/blue.png');
         this.load.image('detector', 'assets/textures/detector.png');
         this.load.image('meetup_tileset', 'assets/textures/tileset.png');
+
+        this.load.image('menu_button', 'assets/textures/to_main_menu.png');
+        this.load.image('next_button', 'assets/textures/to_next_level.png');
+        this.load.image('previous_button', 'assets/textures/to_previous_level.png');
+
+        this.load.image('level_one', 'assets/textures/level_one.png');
+        this.load.image('level_two', 'assets/textures/level_two.png');
+
         this.load.spritesheet('arrow', 'assets/textures/arrow_panel.png', 64, 64, 24);
         this.load.spritesheet('player_one', 'assets/textures/player_one.png', 64, 64, 32);
+        
+        this.load.spritesheet('basic_enemy', 'assets/textures/basic_enemy.png', 64, 64, 28);
 	    },
 	create: function () {
 		this.asset.cropEnabled = false;
@@ -482,5 +641,39 @@ Preload.prototype = {
 };
 
 module.exports = Preload;
+
+},{}],12:[function(require,module,exports){
+'use strict';
+
+function Success() {
+
+}
+
+Success.prototype = {
+	preload: function () {
+
+	},
+	create: function () {
+		this.nextButton = this.game.add.button(192, 128, 'next_button', this.nextLevel, this);
+		this.previousButton = this.game.add.button(640, 128, 'previous_button', this.previousLevel, this);
+		this.menuButton = this.game.add.button(384, 384, 'menu_button', this.mainMenu, this);
+	},
+	update: function () {
+		
+	},
+	nextLevel: function () {
+		this.game.currentLevel += 1;
+		this.game.state.start('play');
+	},
+	previousLevel: function () {
+		this.game.currentLevel -= 1;
+		this.game.state.start('play');
+	},
+	mainMenu: function () {
+		this.game.state.start('menu');
+	}
+};
+
+module.exports = Success;
 
 },{}]},{},[3])

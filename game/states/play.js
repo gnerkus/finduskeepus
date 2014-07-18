@@ -1,6 +1,12 @@
 'use strict';
+
+// * move to Success when user causes both players to collide with themselves
+// * show pauseOverlay when 'pause' button is clicked
+// * move to Play when user causes a player to collide with an enemy. 
+
 var Panel = require('../prefabs/panel');
 var Player = require('../prefabs/player');
+var BasicEnemy = require('../prefabs/basicEnemy');
 
 
 function Play() {
@@ -12,8 +18,8 @@ Play.prototype = {
         this.game.physics.startSystem(Phaser.Physics.ARCADE); // 2 -- add physics
         console.log('Added physics to game.');
 
-        this.map = this.game.add.tilemap('meetup_map');
-        this.map.addTilesetImage('meetup_tileset');
+        this.map = this.game.add.tilemap(this.game.meetupLevels[this.game.currentLevel - 1].map);
+        this.map.addTilesetImage(this.game.meetupLevels[this.game.currentLevel - 1].tileset);
         this.layer = this.map.createLayer('Floor');
         this.layer.resizeWorld();
 
@@ -43,16 +49,35 @@ Play.prototype = {
         this.detectors.add(this.playerTwo.detector);
         console.log(this.detectors);
 
+        this.enemy = new BasicEnemy(this.game, 352, 480);
+        console.log('Added enemy to game.');
+        console.log(this.enemy);
+
+        this.game.add.existing(this.enemy);
+
+        this.detectors.add(this.enemy.detector);
+        console.log(this.detectors);
+
 	    },
 	update: function () {
         this.game.physics.arcade.overlap(this.detectors, this.arrowPanels, this.shareBehaviours, null, this);
-
+        this.game.physics.arcade.collide(this.player, this.playerTwo, this.levelClear, null, this);
+        this.game.physics.arcade.collide(this.player, this.enemy, this.levelFail, null, this);
+        this.game.physics.arcade.collide(this.playerTwo, this.enemy, this.levelFail, null, this);
 	},
 
     shareBehaviours: function (detector, panel) {
         detector.player.changeState(panel.getBehaviour());
         console.log(panel);
         console.log(detector);
+    },
+
+    levelClear: function (playerOne, playerTwo) {
+        this.game.state.start('success');
+    },
+
+    levelFail: function (player, enemy) {
+        this.game.state.start('play');
     }
 };
 
