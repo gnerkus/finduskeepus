@@ -387,6 +387,7 @@ Player.prototype.getBehaviour = function () {
     return this.behaviour;
 };
 
+
 Player.prototype.changeState = function (behaviour) {
     for (var behaviourIndex in behaviour) {
         console.log('Found ' + behaviourIndex);
@@ -412,6 +413,8 @@ function Boot() {
 Boot.prototype = {
 	preload: function () {
 		this.load.image('preloader', 'assets/preloader.gif');
+        this.load.image('preload_background', 'assets/loader_bg.png');
+        this.load.image('logo', 'assets/logo.png');
 	},
 	create: function () {
 		this.game.meetupLevels = [
@@ -466,7 +469,7 @@ LevelMenu.prototype = {
 	},
 
 	create: function () {
-
+        this.game.add.sprite(0, 0, 'level_menu_bg');
 	},
 
 	update: function () {
@@ -489,12 +492,20 @@ Menu.prototype = {
 
 	},
 	create: function () {
-		this.startButton = this.game.add.button(this.game.width / 2, 300, 'blue', this.startClick, this);
+		this.game.add.image(0, 0, 'menu_background');
+		this.title = this.game.add.image(this.game.width / 2, 144, 'menu_title');
+		this.title.anchor.setTo(0.5, 0.5);
+		this.startButton = this.game.add.button(this.game.width / 2, 320, 'menu_play_button', this.startClick, this);
 		this.startButton.anchor.setTo(0.5, 0.5);
+		this.helpButton = this.game.add.button(this.game.width / 2, 384, 'menu_help_button', this.helpClick, this);
+		this.helpButton.anchor.setTo(0.5, 0.5);
 	},
 	startClick: function () {
 		console.log('Menu click.');
 		this.game.state.start('play');
+	},
+	helpClick: function () {
+		console.log('Help click.');
 	},
 	update: function () {
 
@@ -604,10 +615,21 @@ Preload.prototype = {
 		console.log(this.game.meetupLevels);
 		console.log(this.game.currentLevel);
 
-        this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
-        this.asset = this.add.sprite(this.width / 2, this.height / 2, 'preloader');
+        this.loadBackground = this.add.sprite(0, 0, 'preload_background');
+        this.logo = this.add.sprite(480, 288, 'logo');
+        this.logo.anchor.setTo(0.5, 0.5);
+        this.asset = this.add.sprite(480, 544, 'preloader');
         this.asset.anchor.setTo(0.5, 0.5);
+        this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
         this.load.setPreloadSprite(this.asset);
+
+        this.load.image('menu_background', 'assets/textures/menu_screen_background.png');
+        this.load.image('menu_title', 'assets/textures/game_title.png');
+        this.load.image('menu_play_button', 'assets/textures/menu_screen_button.png');
+        this.load.image('menu_help_button', 'assets/textures/menu_screen_help_button.png');
+
+        this.load.image('level_menu_bg', 'assets/level_menu_background.png');
+        this.load.image('level_menu_btn', 'assets/level_menu_button.png');
 
         this.load.tilemap('meetup_map', 'assets/tilemaps/meetup_game.json', null, Phaser.Tilemap.TILED_JSON);
         this.load.tilemap('meetup_map_2', 'assets/tilemaps/meetup_game_2.json', null, Phaser.Tilemap.TILED_JSON);
@@ -676,4 +698,4 @@ Success.prototype = {
 
 module.exports = Success;
 
-},{}]},{},[3])
+},{}]},{},[3]);
