@@ -73,6 +73,7 @@ Player.prototype.getBehaviour = function () {
     return this.behaviour;
 };
 
+
 Player.prototype.changeState = function (behaviour) {
     for (var behaviourIndex in behaviour) {
         console.log('Found ' + behaviourIndex);

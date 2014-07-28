@@ -12,7 +12,7 @@ LevelMenu.prototype = {
 	},
 
 	create: function () {
-
+        this.game.add.sprite(0, 0, 'level_menu_bg');
 	},
 
 	update: function () {

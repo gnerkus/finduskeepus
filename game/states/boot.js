@@ -7,6 +7,8 @@ function Boot() {
 Boot.prototype = {
 	preload: function () {
 		this.load.image('preloader', 'assets/preloader.gif');
+        this.load.image('preload_background', 'assets/loader_bg.png');
+        this.load.image('logo', 'assets/logo.png');
 	},
 	create: function () {
 		this.game.meetupLevels = [

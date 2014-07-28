@@ -12,10 +12,21 @@ Preload.prototype = {
 		console.log(this.game.meetupLevels);
 		console.log(this.game.currentLevel);
 
-        this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
-        this.asset = this.add.sprite(this.width / 2, this.height / 2, 'preloader');
+        this.loadBackground = this.add.sprite(0, 0, 'preload_background');
+        this.logo = this.add.sprite(480, 288, 'logo');
+        this.logo.anchor.setTo(0.5, 0.5);
+        this.asset = this.add.sprite(480, 544, 'preloader');
         this.asset.anchor.setTo(0.5, 0.5);
+        this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
         this.load.setPreloadSprite(this.asset);
+
+        this.load.image('menu_background', 'assets/textures/menu_screen_background.png');
+        this.load.image('menu_title', 'assets/textures/game_title.png');
+        this.load.image('menu_play_button', 'assets/textures/menu_screen_button.png');
+        this.load.image('menu_help_button', 'assets/textures/menu_screen_help_button.png');
+
+        this.load.image('level_menu_bg', 'assets/level_menu_background.png');
+        this.load.image('level_menu_btn', 'assets/level_menu_button.png');
 
         this.load.tilemap('meetup_map', 'assets/tilemaps/meetup_game.json', null, Phaser.Tilemap.TILED_JSON);
         this.load.tilemap('meetup_map_2', 'assets/tilemaps/meetup_game_2.json', null, Phaser.Tilemap.TILED_JSON);
