@@ -152,7 +152,9 @@
  </objectgroup>
  <objectgroup name="Players" width="15" height="9">
   <object gid="9" x="192" y="128"/>
-  <object gid="9" x="704" y="128"/>
+  <object gid="9" x="704" y="384"/>
  </objectgroup>
- <objectgroup name="Enemies" width="15" height="9"/>
+ <objectgroup name="Enemies" width="15" height="9">
+  <object gid="11" x="448" y="256"/>
+ </objectgroup>
 </map>

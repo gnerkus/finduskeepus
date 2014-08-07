@@ -413,6 +413,56 @@
          "width":15,
          "x":0,
          "y":0
+        }, 
+        {
+         "height":9,
+         "name":"Players",
+         "objects":[
+                {
+                 "gid":9,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":192,
+                 "y":128
+                }, 
+                {
+                 "gid":9,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":704,
+                 "y":128
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":15,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "height":9,
+         "name":"Enemies",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":15,
+         "x":0,
+         "y":0
         }],
  "orientation":"orthogonal",
  "properties":

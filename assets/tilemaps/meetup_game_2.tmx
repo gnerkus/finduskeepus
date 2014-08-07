@@ -5,7 +5,7 @@
  </tileset>
  <layer name="Floor" width="15" height="9">
   <data encoding="base64" compression="zlib">
-   eJylUDEOADEIUrym///xLZhQ4tQOJNQiGHZE7Ack8RETT+O967oSDkL/l+UuApJRMu83hlyYh+eXzD23TA/zbF9Qo7uTt3pknHfozd6ndqSd+e4tflauAjI=
+   eJydUNsKQDEIKmuX///icwYFInvag5CutLbNbD9i/fBCFm61S70Kh096C6qPDvEZNOvFR/V1RpDeHJdciMeU/CBdc0P2hXi2L6qHZyd5902tJ/n3Hryz/icoO4nr7Cs+hb4CUQ==
   </data>
  </layer>
  <objectgroup name="Arrows" width="15" height="9" visible="0">
@@ -149,5 +149,12 @@
     <property name="directions" value="[0, 1, 2, 3]"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup name="Players" width="15" height="9">
+  <object gid="9" x="192" y="128"/>
+  <object gid="9" x="704" y="128"/>
+ </objectgroup>
+ <objectgroup name="Enemies" width="15" height="9">
+  <object gid="11" x="448" y="128"/>
  </objectgroup>
 </map>

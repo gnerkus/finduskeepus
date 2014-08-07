@@ -21,7 +21,7 @@
                  "name":"top-corner",
                  "properties":
                     {
-                     "directions":[0, 1]
+                     "directions":"[0, 1]"
                     },
                  "type":"top-corner",
                  "visible":true,
@@ -35,7 +35,7 @@
                  "name":"top",
                  "properties":
                     {
-                     "directions":[0, 1, 2]
+                     "directions":"[0, 1, 2]"
                     },
                  "type":"top",
                  "visible":true,
@@ -49,7 +49,7 @@
                  "name":"top",
                  "properties":
                     {
-                     "directions":[0, 1, 2]
+                     "directions":"[0, 1, 2]"
                     },
                  "type":"top",
                  "visible":true,
@@ -63,7 +63,7 @@
                  "name":"top",
                  "properties":
                     {
-                     "directions":[0, 1, 2]
+                     "directions":"[0, 1, 2]"
                     },
                  "type":"top",
                  "visible":true,
@@ -77,7 +77,7 @@
                  "name":"top",
                  "properties":
                     {
-                     "directions":[0, 1, 2]
+                     "directions":"[0, 1, 2]"
                     },
                  "type":"top",
                  "visible":true,
@@ -91,7 +91,7 @@
                  "name":"top",
                  "properties":
                     {
-                     "directions":[0, 1, 2]
+                     "directions":"[0, 1, 2]"
                     },
                  "type":"top",
                  "visible":true,
@@ -105,7 +105,7 @@
                  "name":"top-right",
                  "properties":
                     {
-                     "directions":[1, 2]
+                     "directions":"[1, 2]"
                     },
                  "type":"top-corner",
                  "visible":true,
@@ -119,7 +119,7 @@
                  "name":"left",
                  "properties":
                     {
-                     "directions":[0, 1, 3]
+                     "directions":"[0, 1, 3]"
                     },
                  "type":"left-side",
                  "visible":true,
@@ -133,7 +133,7 @@
                  "name":"left",
                  "properties":
                     {
-                     "directions":[0, 1, 3]
+                     "directions":"[0, 1, 3]"
                     },
                  "type":"left-side",
                  "visible":true,
@@ -147,7 +147,7 @@
                  "name":"bottom-left",
                  "properties":
                     {
-                     "directions":[0, 3]
+                     "directions":"[0, 3]"
                     },
                  "type":"bottom-corner",
                  "visible":true,
@@ -161,7 +161,7 @@
                  "name":"bottom",
                  "properties":
                     {
-                     "directions":[0, 2, 3]
+                     "direction":"[0, 2, 3]"
                     },
                  "type":"bottom",
                  "visible":true,
@@ -175,7 +175,7 @@
                  "name":"bottom",
                  "properties":
                     {
-                     "directions":[0, 2, 3]
+                     "direction":"[0, 2, 3]"
                     },
                  "type":"bottom",
                  "visible":true,
@@ -189,7 +189,7 @@
                  "name":"bottom",
                  "properties":
                     {
-                     "directions":[0, 2, 3]
+                     "direction":"[0, 2, 3]"
                     },
                  "type":"bottom",
                  "visible":true,
@@ -203,7 +203,7 @@
                  "name":"bottom",
                  "properties":
                     {
-                     "directions":[0, 2, 3]
+                     "direction":"[0, 2, 3]"
                     },
                  "type":"bottom",
                  "visible":true,
@@ -217,7 +217,7 @@
                  "name":"bottom",
                  "properties":
                     {
-                     "directions":[0, 2, 3]
+                     "direction":"[0, 2, 3]"
                     },
                  "type":"bottom",
                  "visible":true,
@@ -231,7 +231,7 @@
                  "name":"bottom-right",
                  "properties":
                     {
-                     "directions":[2, 3]
+                     "directions":"[2, 3]"
                     },
                  "type":"bottom-corner",
                  "visible":true,
@@ -245,7 +245,7 @@
                  "name":"right",
                  "properties":
                     {
-                     "directions":[1, 2, 3]
+                     "directions":"[1, 2, 3]"
                     },
                  "type":"right-side",
                  "visible":true,
@@ -259,7 +259,7 @@
                  "name":"right",
                  "properties":
                     {
-                     "directions":[1, 2, 3]
+                     "directions":"[1, 2, 3]"
                     },
                  "type":"right-side",
                  "visible":true,
@@ -273,7 +273,7 @@
                  "name":"centre",
                  "properties":
                     {
-                     "directions":[0, 1, 2, 3]
+                     "directions":"[0, 1, 2, 3]"
                     },
                  "type":"centre",
                  "visible":true,
@@ -287,7 +287,7 @@
                  "name":"centre",
                  "properties":
                     {
-                     "directions":[0, 1, 2, 3]
+                     "directions":"[0, 1, 2, 3]"
                     },
                  "type":"centre",
                  "visible":true,
@@ -301,7 +301,7 @@
                  "name":"centre",
                  "properties":
                     {
-                     "directions":[0, 1, 2, 3]
+                     "directions":"[0, 1, 2, 3]"
                     },
                  "type":"centre",
                  "visible":true,
@@ -315,7 +315,7 @@
                  "name":"centre",
                  "properties":
                     {
-                     "directions":[0, 1, 2, 3]
+                     "directions":"[0, 1, 2, 3]"
                     },
                  "type":"centre",
                  "visible":true,
@@ -329,7 +329,7 @@
                  "name":"centre",
                  "properties":
                     {
-                     "directions":[0, 1, 2, 3]
+                     "directions":"[0, 1, 2, 3]"
                     },
                  "type":"centre",
                  "visible":true,
@@ -343,7 +343,7 @@
                  "name":"centre",
                  "properties":
                     {
-                     "directions":[0, 1, 2, 3]
+                     "directions":"[0, 1, 2, 3]"
                     },
                  "type":"centre",
                  "visible":true,
@@ -357,7 +357,7 @@
                  "name":"centre",
                  "properties":
                     {
-                     "directions":[0, 1, 2, 3]
+                     "directions":"[0, 1, 2, 3]"
                     },
                  "type":"centre",
                  "visible":true,
@@ -371,7 +371,7 @@
                  "name":"centre",
                  "properties":
                     {
-                     "directions":[0, 1, 2, 3]
+                     "directions":"[0, 1, 2, 3]"
                     },
                  "type":"centre",
                  "visible":true,
@@ -385,7 +385,7 @@
                  "name":"centre",
                  "properties":
                     {
-                     "directions":[0, 1, 2, 3]
+                     "directions":"[0, 1, 2, 3]"
                     },
                  "type":"centre",
                  "visible":true,
@@ -399,7 +399,7 @@
                  "name":"centre",
                  "properties":
                     {
-                     "directions":[0, 1, 2, 3]
+                     "directions":"[0, 1, 2, 3]"
                     },
                  "type":"centre",
                  "visible":true,
@@ -429,7 +429,7 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":192,
+                 "x":64,
                  "y":128
                 }, 
                 {
@@ -443,8 +443,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":704,
-                 "y":128
+                 "x":832,
+                 "y":512
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -470,6 +470,48 @@
                  "width":0,
                  "x":448,
                  "y":128
+                }, 
+                {
+                 "gid":11,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":448,
+                 "y":256
+                }, 
+                {
+                 "gid":11,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":448,
+                 "y":384
+                }, 
+                {
+                 "gid":11,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":448,
+                 "y":512
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -487,11 +529,11 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"tileset.png",
+         "image":"..\/tileset.png",
          "imageheight":128,
          "imagewidth":384,
          "margin":0,
-         "name":"meetup_tileset",
+         "name":"tileset",
          "properties":
             {
 
