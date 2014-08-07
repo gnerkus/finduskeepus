@@ -5049,7 +5049,7 @@
        y1="700.36218"
        x2="-1120"
        y2="732.36218"
-       gradientTransform="matrix(0.33333333,0,0,1,181.3333,700)" />
+       gradientTransform="matrix(0.66666666,0,0,1,554.6666,700)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient9233"
@@ -5090,6 +5090,96 @@
        y1="700.36218"
        x2="-1120"
        y2="732.36218" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient9233"
+       id="linearGradient8997"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.66666666,0,0,1,1162.6666,732)"
+       x1="-1120"
+       y1="700.36218"
+       x2="-1120"
+       y2="732.36218" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient9233"
+       id="linearGradient9163"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.66666666,0,0,1,554.6666,928)"
+       x1="-1120"
+       y1="700.36218"
+       x2="-1120"
+       y2="732.36218" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient9233"
+       id="linearGradient9586"
+       gradientUnits="userSpaceOnUse"
+       x1="-1120"
+       y1="700.36218"
+       x2="-1120"
+       y2="732.36218"
+       gradientTransform="translate(628.05477,1104)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient9241"
+       id="linearGradient9588"
+       gradientUnits="userSpaceOnUse"
+       x1="-1099.9452"
+       y1="700.36218"
+       x2="-1099.9452"
+       y2="716.36218"
+       gradientTransform="translate(628.05477,1104)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient9233"
+       id="linearGradient9594"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.66666666,0,0,1,298.6666,924)"
+       x1="-1120"
+       y1="700.36218"
+       x2="-1120"
+       y2="732.36218" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient9233"
+       id="linearGradient9622"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.33333333,0,0,1,-234.6667,896)"
+       x1="-1120"
+       y1="700.36218"
+       x2="-1120"
+       y2="732.36218" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient9233"
+       id="linearGradient9636"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.33333333,0,0,1,-346.6667,892)"
+       x1="-1120"
+       y1="700.36218"
+       x2="-1120"
+       y2="732.36218" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient9233"
+       id="linearGradient9750"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.6666666,0,0,1,1402.6665,1264)"
+       x1="-1120"
+       y1="700.36218"
+       x2="-1120"
+       y2="732.36218" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient9233"
+       id="linearGradient9778"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(367.99984,1120)"
+       x1="-1120"
+       y1="700.36218"
+       x2="-1120"
+       y2="732.36218" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -5098,12 +5188,12 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="768"
-     inkscape:cy="-576"
+     inkscape:zoom="0.49080882"
+     inkscape:cx="-719.68524"
+     inkscape:cy="-770.3147"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     showgrid="false"
+     showgrid="true"
      inkscape:snap-bbox="true"
      inkscape:bbox-paths="true"
      inkscape:bbox-nodes="true"
@@ -5150,12 +5240,12 @@
        ry="8"
        style="fill:#f8285e;fill-opacity:1;stroke:none"
        id="rect6490"
-       width="64"
+       width="128"
        height="64"
        x="-192"
        y="1372.3622"
        rx="8"
-       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/level_menu_button.png"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/to_next_level.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <rect
@@ -27706,7 +27796,7 @@
        inkscape:connector-curvature="0"
        id="path6358"
        d="m -3736,892.36213 c -4.432,0 -8,-3.568 -8,-8 l 0,-112 c 0,-4.432 3.568,-8 8,-8 l 16,0 c 4.432,0 8,3.568 8,8 l 0,67.4375 9.7188,-9.71875 -0.3438,-0.34375 c 0,0 1.3629,-1.34245 3.75,-3.0625 0.047,-0.0337 0.077,-0.0598 0.125,-0.0937 l 2.0625,-2.09375 0.4375,0.4375 c 7.1955,-4.41136 19.6145,-9.02562 32.75,-0.25 l 0.1875,-0.1875 1.125,1.125 c 1.5966,1.1737 3.2078,2.5203 4.8125,4.125 l -0.3438,0.34375 9.7188,9.71875 0,-67.4375 c 0,-4.432 3.568,-8 8,-8 l 16,0 c 4.432,0 8,3.568 8,8 l 0,112 c 0,4.432 -3.568,8 -8,8 l -16,0 c -0.2238,0 -0.4372,-0.0134 -0.6562,-0.0313 l -0.031,0.0313 -0.031,-0.0313 c -3.8583,-0.34441 -6.918,-3.38797 -7.25,-7.25 L -3680,853.04963 l -32.0312,32.03125 c -0.332,3.86203 -3.3917,6.90559 -7.25,7.25 l -0.031,0.0313 -0.031,-0.0313 c -0.219,0.0178 -0.4324,0.0313 -0.6562,0.0313 l -16,0 z"
-       style="opacity:0.8;fill:#5ef828;fill-opacity:1;stroke:none" />
+       style="opacity:1;fill:#5ef828;fill-opacity:1;stroke:none" />
     <rect
        transform="scale(-1,-1)"
        style="opacity:0.8;fill:#5ef828;fill-opacity:1;stroke:none"
@@ -27881,12 +27971,12 @@
     <rect
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/level_menu_button.png"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/to_next_level.png"
        rx="8"
        y="1368.3622"
        x="-192"
        height="64"
-       width="64"
+       width="128"
        id="rect6480"
        style="fill:url(#linearGradient6485);fill-opacity:1;stroke:none"
        ry="8" />
@@ -48880,5 +48970,481 @@
        id="rect12406"
        style="fill:url(#linearGradient12408);fill-opacity:1;stroke:none"
        ry="8" />
+    <path
+       sodipodi:type="star"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path8988"
+       sodipodi:sides="3"
+       sodipodi:cx="-144"
+       sodipodi:cy="1372.3622"
+       sodipodi:r1="32.249031"
+       sodipodi:r2="16.124516"
+       sodipodi:arg1="0.52359878"
+       sodipodi:arg2="1.5707963"
+       inkscape:flatsided="true"
+       inkscape:rounded="1.0408341e-17"
+       inkscape:randomized="-2.0816682e-17"
+       d="m -116.07152,1388.4867 -55.85696,0 L -144,1340.1132 z"
+       inkscape:transform-center-y="2.9130797e-05"
+       transform="matrix(0,0.85933765,-1,0,1236.3622,1524.1068)"
+       inkscape:transform-center-x="-8.0622751"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/to_next_level.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/to_previous_level.png"
+       rx="8"
+       y="1404.3622"
+       x="416"
+       height="64"
+       width="128"
+       id="rect8991"
+       style="fill:#f8285e;fill-opacity:1;stroke:none"
+       ry="8"
+       transform="scale(-1,1)" />
+    <rect
+       ry="8"
+       style="fill:url(#linearGradient8997);fill-opacity:1;stroke:none"
+       id="rect8993"
+       width="128"
+       height="64"
+       x="416"
+       y="1400.3622"
+       rx="8"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/to_previous_level.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       transform="scale(-1,1)" />
+    <path
+       inkscape:transform-center-x="8.0622751"
+       transform="matrix(0,0.85933765,1,0,-1844.3622,1556.1068)"
+       inkscape:transform-center-y="2.9130797e-05"
+       d="m -116.07152,1388.4867 -55.85696,0 L -144,1340.1132 z"
+       inkscape:randomized="-2.0816682e-17"
+       inkscape:rounded="1.0408341e-17"
+       inkscape:flatsided="true"
+       sodipodi:arg2="1.5707963"
+       sodipodi:arg1="0.52359878"
+       sodipodi:r2="16.124516"
+       sodipodi:r1="32.249031"
+       sodipodi:cy="1372.3622"
+       sodipodi:cx="-144"
+       sodipodi:sides="3"
+       id="path8995"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       sodipodi:type="star"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/to_previous_level.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       ry="8"
+       style="fill:#f8285e;fill-opacity:1;stroke:none"
+       id="rect9159"
+       width="128"
+       height="64"
+       x="-192"
+       y="1600.3622"
+       rx="8"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/replay_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/replay_button.png"
+       rx="8"
+       y="1596.3622"
+       x="-192"
+       height="64"
+       width="128"
+       id="rect9161"
+       style="fill:url(#linearGradient9163);fill-opacity:1;stroke:none"
+       ry="8" />
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/to_level_menu.png"
+       rx="8"
+       y="1596.3622"
+       x="-448"
+       height="64"
+       width="128"
+       id="rect9590"
+       style="fill:#f8285e;fill-opacity:1;stroke:none"
+       ry="8" />
+    <rect
+       ry="8"
+       style="fill:url(#linearGradient9594);fill-opacity:1;stroke:none"
+       id="rect9592"
+       width="128"
+       height="64"
+       x="-448"
+       y="1592.3622"
+       rx="8"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/to_level_menu.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       d="m -104,1628.3622 c 0,-13.2548 -10.7452,-24 -24,-24 -13.2548,0 -24,10.7452 -24,24 0,13.2548 10.7452,24 24,24 l 0,-8 c -8.8366,0 -16,-7.1634 -16,-16 0,-8.8366 7.1634,-16 16,-16 8.8366,0 16,7.1634 16,16 l 8,0 z"
+       id="path9596"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/replay_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="star"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path9601"
+       sodipodi:sides="3"
+       sodipodi:cx="-304"
+       sodipodi:cy="1516.3622"
+       sodipodi:r1="32"
+       sodipodi:r2="16"
+       sodipodi:arg1="1.5707963"
+       sodipodi:arg2="2.6179939"
+       inkscape:flatsided="true"
+       inkscape:rounded="1.0408341e-17"
+       inkscape:randomized="-2.0816682e-17"
+       d="m -304,1548.3622 -27.71281,-48 55.42562,0 z"
+       inkscape:transform-center-y="2.6666221"
+       transform="matrix(0.35566244,0,0,0.33333334,0.12138191,1128.2414)"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/replay_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect9604"
+       width="48"
+       height="8"
+       x="-408"
+       y="1604.3622"
+       rx="2"
+       ry="2"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/to_level_menu.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       ry="2"
+       rx="2"
+       y="1620.3622"
+       x="-408"
+       height="8"
+       width="48"
+       id="rect9606"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/to_level_menu.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect9608"
+       width="48"
+       height="8"
+       x="-408"
+       y="1636.3622"
+       rx="2"
+       ry="2"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/to_level_menu.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       ry="8"
+       style="fill:#f8285e;fill-opacity:1;stroke:none"
+       id="rect9612"
+       width="64"
+       height="64"
+       x="-608"
+       y="1568.3622"
+       rx="8"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/pause_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/pause_button.png"
+       rx="8"
+       y="1564.3622"
+       x="-608"
+       height="64"
+       width="64"
+       id="rect9614"
+       style="fill:url(#linearGradient9622);fill-opacity:1;stroke:none"
+       ry="8" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect9624"
+       width="12"
+       height="40"
+       x="-592"
+       y="1576.3622"
+       rx="2"
+       ry="2"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/pause_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect9626"
+       width="12"
+       height="40"
+       x="-572"
+       y="1576.3622"
+       rx="2"
+       ry="2"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/pause_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/exit_button.png"
+       rx="8"
+       y="1564.3622"
+       x="-720"
+       height="64"
+       width="64"
+       id="rect9628"
+       style="fill:#f8285e;fill-opacity:1;stroke:none"
+       ry="8" />
+    <rect
+       ry="8"
+       style="fill:url(#linearGradient9636);fill-opacity:1;stroke:none"
+       id="rect9630"
+       width="64"
+       height="64"
+       x="-720"
+       y="1560.3622"
+       rx="8"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/exit_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       ry="2"
+       rx="1.3333334"
+       y="619.48065"
+       x="-1616.4596"
+       height="40"
+       width="8"
+       id="rect9632"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/exit_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       transform="matrix(-0.70710678,-0.70710678,-0.70710678,0.70710678,0,0)"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect9638"
+       width="8"
+       height="40"
+       x="-643.48065"
+       y="1592.4596"
+       rx="1.3333334"
+       ry="2"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/exit_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       ry="0"
+       rx="0"
+       y="3712"
+       x="-3.6378152"
+       height="32"
+       width="64"
+       id="rect9640"
+       style="opacity:0.8;fill:#5ef828;fill-opacity:1;stroke:none"
+       transform="matrix(0,1,-1,0,0,0)" />
+    <rect
+       y="3.6378152"
+       x="3648"
+       height="32"
+       width="64"
+       id="rect9644"
+       style="opacity:0.8;fill:#5ef828;fill-opacity:1;stroke:none"
+       transform="scale(-1,-1)" />
+    <rect
+       transform="scale(-1,-1)"
+       style="opacity:0.8;fill:#5ef828;fill-opacity:1;stroke:none"
+       id="rect9646"
+       width="64"
+       height="32"
+       x="3648"
+       y="-92.362183"
+       rx="0"
+       ry="0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path9648"
+       d="m -3648,-3.6378178 32,0 c 0,0 0,-31.9999992 -32,-31.9999992 z"
+       style="fill:#62f62f;fill-opacity:1;stroke:none" />
+    <path
+       style="fill:#62f62f;fill-opacity:1;stroke:none"
+       d="m -3712,-3.6378178 -32,0 c 0,0 0,-31.9999992 32,-31.9999992 z"
+       id="path9650"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path9652"
+       d="m -3712,60.362183 -32,0 c 0,0 0,32 32,32 z"
+       style="fill:#62f62f;fill-opacity:1;stroke:none" />
+    <path
+       style="fill:#62f62f;fill-opacity:1;stroke:none"
+       d="m -3648,60.362183 32,0 c 0,0 0,32 -32,32 z"
+       id="path9654"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#5ef828;fill-opacity:1;stroke:none"
+       d="m -3560.7837,764.3702 c -2.4576,0 -4.9143,0.93323 -6.7973,2.81572 l -13.5944,13.59055 c -3.7661,3.76499 -3.7661,9.82557 0,13.59056 l 33.9862,34.01393 -33.9862,33.97638 c -3.7661,3.76498 -3.7661,9.82555 0,13.59055 l 13.5944,13.59054 c 3.7661,3.765 9.8285,3.765 13.5946,0 l 33.9864,-33.97638 33.9863,33.97638 c 3.7661,3.765 9.8286,3.765 13.5947,0 l 13.5944,-13.59054 c 3.7661,-3.765 3.7661,-9.82557 0,-13.59055 l -33.9863,-33.97638 33.9863,-34.01393 c 3.7661,-3.76499 3.7661,-9.82557 0,-13.59056 l -13.5944,-13.59055 c -3.7661,-3.76499 -9.8286,-3.76499 -13.5947,0 L -3520,801.1623 l -33.9864,-33.97638 c -1.883,-1.88249 -4.3397,-2.81572 -6.7973,-2.81572 z"
+       id="rect9697"
+       inkscape:connector-curvature="0" />
+    <rect
+       ry="8"
+       style="fill:#f8285e;fill-opacity:1;stroke:none"
+       id="rect9742"
+       width="320"
+       height="64"
+       x="-464"
+       y="1936.3622"
+       rx="8"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/continue_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/continue_button.png"
+       rx="8"
+       y="1932.3622"
+       x="-464"
+       height="64"
+       width="320"
+       id="rect9744"
+       style="fill:url(#linearGradient9750);fill-opacity:1;stroke:none"
+       ry="8" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       d="m -439.9863,1948.3654 c -7.9992,0 -7.9992,7.9992 -7.9992,7.9992 l 0,15.9984 c 0,0 0,7.9992 7.9992,7.9992 l 15.9984,0 c 7.9992,0 7.9992,-7.9992 7.9992,-7.9992 l -7.9992,0 -15.9984,0 0,-15.9984 15.9984,0 7.9992,0 c 0,0 0,-7.9992 -7.9992,-7.9992 l -15.9984,0 z"
+       id="rect9656"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/continue_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       d="m -399.9903,1948.3654 c -7.9992,0 -7.9992,7.9992 -7.9992,7.9992 l 0,15.9984 c 0,0 0,7.9992 7.9992,7.9992 l 15.9984,0 c 7.9991,0 7.9991,-7.9992 7.9991,-7.9992 l 0,-15.9984 c 0,0 0,-7.9992 -7.9991,-7.9992 l -15.9984,0 z m 0,7.9992 15.9984,0 0,15.9984 -15.9984,0 0,-15.9984 z"
+       id="rect9671"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/continue_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       d="m -365.9938,1948.3654 c -1.1078,0 -1.9998,0.8919 -1.9998,1.9998 l 0,27.9972 c 0,1.1079 0.892,1.9998 1.9998,1.9998 l 3.9996,0 c 1.1079,0 1.9998,-0.8919 1.9998,-1.9998 l 0,-16.35 15.0688,15.0767 c 0.2674,0.2673 0.5889,0.4385 0.9296,0.5234 l 0,0.7499 c 0,1.1079 0.8919,1.9998 1.9998,1.9998 l 3.9996,0 c 1.1079,0 1.9998,-0.8919 1.9998,-1.9998 l 0,-27.9972 c 0,-1.1079 -0.8919,-1.9998 -1.9998,-1.9998 l -3.9996,0 c -1.1079,0 -1.9998,0.8919 -1.9998,1.9998 l 0,16.3421 -15.0688,-15.0766 c -0.2673,-0.2674 -0.5888,-0.4385 -0.9296,-0.5234 l 0,-0.7421 c 0,-1.1079 -0.8919,-1.9998 -1.9998,-1.9998 l -3.9996,0 z"
+       id="rect9690"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/continue_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       d="m -325.9978,1948.3654 c -1.1079,0 -1.9998,0.8919 -1.9998,1.9998 l 0,3.9996 c 0,1.1079 0.8919,1.9998 1.9998,1.9998 l 9.999,0 0,21.9978 c 0,1.1079 0.8919,1.9998 1.9998,1.9998 l 3.9996,0 c 1.1079,0 1.9998,-0.8919 1.9998,-1.9998 l 0,-21.9978 9.999,0 c 1.1079,0 1.9998,-0.8919 1.9998,-1.9998 l 0,-3.9996 c 0,-1.1079 -0.8919,-1.9998 -1.9998,-1.9998 l -11.9988,0 -3.9996,0 -11.9988,0 z"
+       id="rect9702"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/continue_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       ry="1.9997987"
+       rx="1.9997987"
+       y="280.00241"
+       x="1948.3622"
+       height="7.9991946"
+       width="31.996778"
+       id="rect9708"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none"
+       transform="matrix(0,1,-1,0,0,0)"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/continue_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       id="path9710"
+       d="m -270.0034,1948.3622 c -1.1079,0 -1.9998,0.8919 -1.9998,1.9998 l 0,27.9972 c 0,1.1079 0.8919,1.9998 1.9998,1.9998 l 3.9996,0 c 1.1079,0 1.9998,-0.8919 1.9998,-1.9998 l 0,-16.35 15.0688,15.0767 c 0.2673,0.2673 0.5888,0.4385 0.9296,0.5234 l 0,0.7499 c 0,1.1079 0.8919,1.9998 1.9998,1.9998 l 3.9996,0 c 1.1078,0 1.9998,-0.8919 1.9998,-1.9998 l 0,-27.9972 c 0,-1.1079 -0.892,-1.9998 -1.9998,-1.9998 l -3.9996,0 c -1.1079,0 -1.9998,0.8919 -1.9998,1.9998 l 0,16.3421 -15.0688,-15.0766 c -0.2674,-0.2674 -0.5889,-0.4385 -0.9296,-0.5234 l 0,-0.7421 c 0,-1.1079 -0.8919,-1.9998 -1.9998,-1.9998 l -3.9996,0 z"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/continue_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       d="m -230.0075,1948.3654 c -1.1078,0 -1.9998,0.6689 -1.9998,1.4998 l 0,22.4978 c 0,7.9992 7.9992,7.9992 7.9992,7.9992 l 15.9984,0 c 0,0 7.9992,0 7.9992,-7.9992 l 0,-22.4978 c 0,-0.8309 -0.8919,-1.4998 -1.9998,-1.4998 l -3.9996,0 c -1.1079,0 -1.9998,0.6689 -1.9998,1.4998 l 0,22.4978 -15.9984,0 0,-22.4978 c 0,-0.8309 -0.8919,-1.4998 -1.9998,-1.4998 l -3.9996,0 z"
+       id="path9712"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/continue_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       d="m -190.0115,1948.3654 c -1.1079,0 -1.9998,0.8919 -1.9998,1.9998 l 0,3.9996 0,7.9992 0,3.9996 0,7.9992 0,3.9996 c 0,1.1079 0.8919,1.9998 1.9998,1.9998 l 3.9996,0 23.9976,0 c 1.1079,0 1.9998,-0.8919 1.9998,-1.9998 l 0,-3.9996 c 0,-1.1079 -0.8919,-1.9998 -1.9998,-1.9998 l -21.9978,0 0,-3.9996 14.4986,0 c 0.8309,0 1.4998,-0.8919 1.4998,-1.9998 l 0,-3.9996 c 0,-1.1079 -0.6689,-1.9998 -1.4998,-1.9998 l -14.4986,0 0,-3.9996 21.9978,0 c 1.1079,0 1.9998,-0.8919 1.9998,-1.9998 l 0,-3.9996 c 0,-1.1079 -0.8919,-1.9998 -1.9998,-1.9998 l -27.9972,0 z"
+       id="rect9723"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/continue_button.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       ry="8"
+       style="fill:#f8285e;fill-opacity:1;stroke:none"
+       id="rect9770"
+       width="192"
+       height="64"
+       x="-752"
+       y="1792.3622"
+       rx="8"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/to_main_menu.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/to_main_menu.png"
+       rx="8"
+       y="1788.3622"
+       x="-752"
+       height="64"
+       width="192"
+       id="rect9772"
+       style="fill:url(#linearGradient9778);fill-opacity:1;stroke:none"
+       ry="8" />
+    <g
+       id="g9780"
+       transform="translate(207.9855,-143.99432)"
+       style="fill:#ffffff"
+       inkscape:export-filename="/home/gnerkus/projects/meetup_game/assets/textures/to_main_menu.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         inkscape:connector-curvature="0"
+         id="path9734"
+         d="m -937.9855,1948.3559 c -1.108,0 -2,0.892 -2,2 l 0,28 c 0,1.108 0.892,2 2,2 l 4,0 c 1.108,0 2,-0.892 2,-2 l 0,-16.8594 2.4297,2.4297 -0.086,0.086 c 0,0 0.3408,0.3356 0.9375,0.7656 0.012,0.01 0.019,0.015 0.031,0.024 l 0.5156,0.5234 0.1094,-0.1093 c 1.7989,1.1028 4.9036,2.2564 8.1875,0.063 l 0.047,0.047 0.2812,-0.2812 c 0.3992,-0.2934 0.802,-0.6301 1.2031,-1.0313 l -0.086,-0.086 2.4297,-2.4297 0,16.8594 c 0,1.108 0.892,2 2,2 l 4,0 c 1.108,0 2,-0.892 2,-2 l 0,-28 c 0,-1.108 -0.892,-2 -2,-2 l -4,0 c -0.056,0 -0.1093,0 -0.164,0.01 l -0.01,-0.01 -0.01,0.01 c -0.9646,0.086 -1.7296,0.847 -1.8125,1.8125 l -8.008,8.0078 -8.0078,-8.0078 c -0.083,-0.9655 -0.8479,-1.7264 -1.8125,-1.8125 l -0.01,-0.01 -0.01,0.01 c -0.055,0 -0.1081,-0.01 -0.1641,-0.01 l -4,0 z"
+         style="fill:#ffffff;fill-opacity:1;stroke:none" />
+      <path
+         inkscape:connector-curvature="0"
+         style="fill:#ffffff;fill-opacity:1;stroke:none"
+         d="m -897.9855,1948.3559 c -1.108,0 -2,0.892 -2,2 l 0,4 0,8 0,4 0,8 0,4 c 0,1.108 0.892,2 2,2 l 4,0 24,0 c 1.108,0 2,-0.892 2,-2 l 0,-4 c 0,-1.108 -0.892,-2 -2,-2 l -22,0 0,-4 14.5,0 c 0.831,0 1.5,-0.892 1.5,-2 l 0,-4 c 0,-1.108 -0.669,-2 -1.5,-2 l -14.5,0 0,-4 22,0 c 1.108,0 2,-0.892 2,-2 l 0,-4 c 0,-1.108 -0.892,-2 -2,-2 l -28,0 z"
+         id="path9736" />
+      <path
+         inkscape:connector-curvature="0"
+         style="fill:#ffffff;fill-opacity:1;stroke:none"
+         d="m -857.9855,1948.3559 c -1.108,0 -2,0.892 -2,2 l 0,28 c 0,1.108 0.892,2 2,2 l 4,0 c 1.108,0 2,-0.892 2,-2 l 0,-16.3516 15.0703,15.0782 c 0.2674,0.2674 0.5889,0.4385 0.9297,0.5234 l 0,0.75 c 0,1.108 0.892,2 2,2 l 4,0 c 1.108,0 2,-0.892 2,-2 l 0,-28 c 0,-1.108 -0.892,-2 -2,-2 l -4,0 c -1.108,0 -2,0.892 -2,2 l 0,16.3438 -15.0703,-15.0782 c -0.2674,-0.2674 -0.589,-0.4385 -0.9297,-0.5234 l 0,-0.7422 c 0,-1.108 -0.892,-2 -2,-2 l -4,0 z"
+         id="path9738" />
+      <path
+         inkscape:connector-curvature="0"
+         style="fill:#ffffff;fill-opacity:1;stroke:none"
+         d="m -817.9855,1948.3559 c -1.108,0 -2,0.669 -2,1.5 l 0,22.5 c 0,8 8,8 8,8 l 16,0 c 0,0 8,0 8,-8 l 0,-22.5 c 0,-0.831 -0.892,-1.5 -2,-1.5 l -4,0 c -1.108,0 -2,0.669 -2,1.5 l 0,22.5 -16,0 0,-22.5 c 0,-0.831 -0.892,-1.5 -2,-1.5 l -4,0 z"
+         id="path9740" />
+    </g>
   </g>
 </svg>

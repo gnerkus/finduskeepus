@@ -4,14 +4,14 @@ var signpostBehaviour = require('./../behaviours/signpost');
 
 function Panel (game, x, y, frame) {
     Phaser.Sprite.call(this, game, x, y, 'arrow', frame);
-    console.log('Called super class.');
+    //console.log('Called super class.');
 
     this.game.physics.arcade.enableBody(this);
     this.inputEnabled = true;
-    console.log('Input enabled for panel.');
+    //console.log('Input enabled for panel.');
     this.events.onInputDown.add(this.nextDirection, this);
-    console.log('Added input listener to panel.');
-    console.log(this);
+    //console.log('Added input listener to panel.');
+    //console.log(this);
 
     this.animations.add('down', [0, 1, 2, 3, 4, 5]);
     this.animations.add('left', [6, 7, 8, 9, 10, 11]);
@@ -41,6 +41,8 @@ function Panel (game, x, y, frame) {
 
     this.addComponent(signpostBehaviour);
     console.log('Added signpost component.');
+
+    this.arrowSfx = this.game.add.audio('arrow');
 }
 
 Panel.prototype = Object.create(Phaser.Sprite.prototype);
@@ -93,6 +95,7 @@ Panel.prototype.changeState = function (behaviour) {
 
 Panel.prototype.nextDirection = function () {
     this.changeState(this.inputChange);
+    this.arrowSfx.play();
     console.log(this);
 };
 

@@ -9,20 +9,24 @@ Success.prototype = {
 
 	},
 	create: function () {
-		this.nextButton = this.game.add.button(192, 128, 'next_button', this.nextLevel, this);
-		this.previousButton = this.game.add.button(640, 128, 'previous_button', this.previousLevel, this);
+		this.game.add.sprite(0, 0, 'level_menu_bg');
+		this.nextButton = this.game.add.button(552, 288, 'next_button', this.nextLevel, this);
 		this.menuButton = this.game.add.button(384, 384, 'menu_button', this.mainMenu, this);
+		this.levelMenuButton = this.game.add.button(416, 288, 'level_menu_button', this.levelMenu, this);
+		this.replayButton = this.game.add.button(280, 288, 'replay_button', this.currentLevel, this);
 	},
 	update: function () {
 		
 	},
 	nextLevel: function () {
-		this.game.currentLevel += 1;
+		this.game.chapters[this.game.currentChapter].currentLevel += 1;
 		this.game.state.start('play');
 	},
-	previousLevel: function () {
-		this.game.currentLevel -= 1;
+	currentLevel: function () {
 		this.game.state.start('play');
+	},
+	levelMenu: function () {
+		this.game.state.start('level-menu');
 	},
 	mainMenu: function () {
 		this.game.state.start('menu');

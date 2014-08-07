@@ -120,17 +120,18 @@ window.onload = function () {
 	game.state.start('boot');
 
 };
-},{"./states/boot":7,"./states/level-menu":8,"./states/menu":9,"./states/play":10,"./states/preload":11,"./states/success":12}],4:[function(require,module,exports){
+},{"./states/boot":8,"./states/level-menu":9,"./states/menu":10,"./states/play":11,"./states/preload":12,"./states/success":13}],4:[function(require,module,exports){
 'use strict';
 
 var bulletBehaviour = require('./../behaviours/runner');
 
-function BasicEnemy (game, x, y, frame) {
-    Phaser.Sprite.call(this, game, x, y, 'basic_enemy', frame);
+function BasicEnemy (game, x, y) {
+    Phaser.Sprite.call(this, game, x + 32, y - 32, 'basic_enemy');
     console.log('Called BasicEnemy super class');
     this.anchor.setTo(0.5, 0.5);
 
-    this.detector = this.game.add.sprite(x, y, 'detector');
+    this.detector = this.game.add.sprite(x + 32, y - 32, 'detector');
+    this.detector.anchor.setTo(0.5, 0.5);
     this.game.physics.arcade.enable(this.detector);
     this.detector.player = this;
 
@@ -212,18 +213,38 @@ module.exports = BasicEnemy;
 },{"./../behaviours/runner":1}],5:[function(require,module,exports){
 'use strict';
 
+function LevelButton (game, callback, callbackContext, levelObject, parent) {
+    Phaser.Group.call(this, game, parent);
+
+    this.button = this.game.add.button(0, 0, 'level_menu_btn', callback, callbackContext);
+    this.levelText = this.game.add.text(0, 0, levelObject.levelNumber, {fontSize: 16});
+
+    this.button.level = levelObject;
+
+    this.add(this.button);
+    this.add(this.levelText);
+}
+
+LevelButton.prototype = Object.create(Phaser.Group.prototype);
+LevelButton.prototype.constructor = LevelButton;
+
+
+module.exports = LevelButton;
+},{}],6:[function(require,module,exports){
+'use strict';
+
 var signpostBehaviour = require('./../behaviours/signpost');
 
 function Panel (game, x, y, frame) {
     Phaser.Sprite.call(this, game, x, y, 'arrow', frame);
-    console.log('Called super class.');
+    //console.log('Called super class.');
 
     this.game.physics.arcade.enableBody(this);
     this.inputEnabled = true;
-    console.log('Input enabled for panel.');
+    //console.log('Input enabled for panel.');
     this.events.onInputDown.add(this.nextDirection, this);
-    console.log('Added input listener to panel.');
-    console.log(this);
+    //console.log('Added input listener to panel.');
+    //console.log(this);
 
     this.animations.add('down', [0, 1, 2, 3, 4, 5]);
     this.animations.add('left', [6, 7, 8, 9, 10, 11]);
@@ -253,6 +274,8 @@ function Panel (game, x, y, frame) {
 
     this.addComponent(signpostBehaviour);
     console.log('Added signpost component.');
+
+    this.arrowSfx = this.game.add.audio('arrow');
 }
 
 Panel.prototype = Object.create(Phaser.Sprite.prototype);
@@ -305,23 +328,25 @@ Panel.prototype.changeState = function (behaviour) {
 
 Panel.prototype.nextDirection = function () {
     this.changeState(this.inputChange);
+    this.arrowSfx.play();
     console.log(this);
 };
 
 module.exports = Panel;
 
 
-},{"./../behaviours/signpost":2}],6:[function(require,module,exports){
+},{"./../behaviours/signpost":2}],7:[function(require,module,exports){
 'use strict';
 
 var bulletBehaviour = require('./../behaviours/runner');
 
-function Player (game, x, y, frame) {
-    Phaser.Sprite.call(this, game, x, y, 'player_one', frame);
+function Player (game, x, y) {
+    Phaser.Sprite.call(this, game, x + 32, y - 32, 'player_one');
     console.log('Called super class');
     this.anchor.setTo(0.5, 0.5);
 
-    this.detector = this.game.add.sprite(x, y, 'detector');
+    this.detector = this.game.add.sprite(x + 32, y - 32, 'detector');
+    this.detector.anchor.setTo(0.5, 0.5);
     this.game.physics.arcade.enable(this.detector);
     this.detector.player = this;
 
@@ -403,7 +428,7 @@ Player.prototype.changeState = function (behaviour) {
 module.exports = Player;
 
 
-},{"./../behaviours/runner":1}],7:[function(require,module,exports){
+},{"./../behaviours/runner":1}],8:[function(require,module,exports){
 'use strict';
 
 function Boot() {
@@ -417,47 +442,101 @@ Boot.prototype = {
         this.load.image('logo', 'assets/logo.png');
 	},
 	create: function () {
-		this.game.meetupLevels = [
+        this.game.currentChapter = 0;
+        this.game.chapters = [
             {
-                map: 'meetup_map',
-                asset: 'assets/tilemaps/meetup_game.json',
-                tileset: 'meetup_tileset',
-                layers: {
-                    environment: 'Floor',
-                    arrows: 'Arrows'
-                },
-                complete: false,
-                stars: 0
+                chapterNumber: 1,
+                title: 'the woods',
+                currentLevel: 0,
+                levels: [
+                    {
+                        levelNumber: 1,
+                        map: 'meetup_map',
+                        asset: 'assets/tilemaps/meetup_game.json',
+                        tileset: 'meetup_tileset',
+                        layers: {
+                            environment: 'Floor',
+                            arrows: 'Arrows'
+                        },
+                        complete: false,
+                        stars: 0
+                    },
+
+                    {
+                        levelNumber: 2,
+                        map: 'meetup_map_2',
+                        asset: 'assets/tilemaps/meetup_game_2.json',
+                        tileset: 'meetup_tileset',
+                        layers: {
+                            environment: 'Floor',
+                            arrows: 'Arrows'
+                        },
+                        complete: false,
+                        stars: 0
+                    },
+
+                    {
+                        levelNumber: 3,
+                        map: 'meetup_map_3',
+                        asset: 'assets/tilemaps/meetup_game_3.json',
+                        tileset: 'meetup_tileset',
+                        layers: {
+                            environment: 'Floor',
+                            arrows: 'Arrows'
+                        },
+                        complete: false,
+                        stars: 0
+                    },
+
+                    {
+                        levelNumber: 4,
+                        map: 'meetup_map_4',
+                        asset: 'assets/tilemaps/meetup_game_4.json',
+                        tileset: 'meetup_tileset',
+                        layers: {
+                            environment: 'Floor',
+                            arrows: 'Arrows'
+                        },
+                        complete: false,
+                        stars: 0
+                    },
+
+                    {
+                        levelNumber: 5,
+                        map: 'meetup_map_5',
+                        asset: 'assets/tilemaps/meetup_game_5.json',
+                        tileset: 'meetup_tileset',
+                        layers: {
+                            environment: 'Floor',
+                            arrows: 'Arrows'
+                        },
+                        complete: false,
+                        stars: 0
+                    },
+                ]
             },
 
             {
-                map: 'meetup_map_2',
-                asset: 'assets/tilemaps/meetup_game_2.json',
-                tileset: 'meetup_tileset',
-                layers: {
-                    environment: 'Floor',
-                    arrows: 'Arrows'
-                },
-                complete: false,
-                stars: 0
+                chapterNumber: 2,
+                title: 'woods at night',
+                currentLevel: 0,
+                levels: []
             }
-		];
-        this.game.currentLevel = 1;
-
+        ];
+		
 		this.game.input.maxPointers = 1;
 		this.game.state.start('preload');
 
-		console.log(this.game.meetupLevels);
-		console.log(this.game.meetupLevels[this.game.currentLevel - 1]);
 	}
 };
 
 module.exports = Boot;
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 // * move to Play when user selects a level
+var LevelButton = require('../prefabs/levelButton');
 
 function LevelMenu () {
 
@@ -469,16 +548,34 @@ LevelMenu.prototype = {
 	},
 
 	create: function () {
+        this.chapter = this.game.chapters[this.game.currentChapter];
+        this.levels = this.chapter.levels;
+
         this.game.add.sprite(0, 0, 'level_menu_bg');
+
+        for (var levelIdx in this.levels) {
+            var level = this.levels[levelIdx];
+            var posX = ((levelIdx % 7) * 2 + 1) * 64;
+            var posY = (Math.floor(levelIdx / 7) * 2 + 1) * 64;
+
+            var levelBtn = new LevelButton(this.game, this.levelClick, this, level);
+            levelBtn.x = posX;
+            levelBtn.y = posY;
+        }
 	},
 
 	update: function () {
 
+	},
+
+	levelClick: function (button) {
+		this.game.chapters[this.game.currentChapter].currentLevel = button.level.levelNumber - 1;
+		this.game.state.start('play');
 	}
 };
 
 module.exports = LevelMenu;
-},{}],9:[function(require,module,exports){
+},{"../prefabs/levelButton":5}],10:[function(require,module,exports){
 'use strict';
 
 // * move to LevelMenu when user clicks 'play'
@@ -499,12 +596,16 @@ Menu.prototype = {
 		this.startButton.anchor.setTo(0.5, 0.5);
 		this.helpButton = this.game.add.button(this.game.width / 2, 384, 'menu_help_button', this.helpClick, this);
 		this.helpButton.anchor.setTo(0.5, 0.5);
+
+		this.buttonSfx = this.game.add.audio('button');
 	},
 	startClick: function () {
+		this.buttonSfx.play();
 		console.log('Menu click.');
-		this.game.state.start('play');
+		this.game.state.start('level-menu');
 	},
 	helpClick: function () {
+		this.buttonSfx.play();
 		console.log('Help click.');
 	},
 	update: function () {
@@ -514,7 +615,7 @@ Menu.prototype = {
 
 module.exports = Menu;
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 // * move to Success when user causes both players to collide with themselves
@@ -524,7 +625,7 @@ module.exports = Menu;
 var Panel = require('../prefabs/panel');
 var Player = require('../prefabs/player');
 var BasicEnemy = require('../prefabs/basicEnemy');
-
+var detectors = null;
 
 function Play() {
 
@@ -532,15 +633,18 @@ function Play() {
 
 Play.prototype = {
 	create: function () {
+        this.chapter = this.game.chapters[this.game.currentChapter];
+        this.level = this.chapter.levels[this.chapter.currentLevel];
+
         this.game.physics.startSystem(Phaser.Physics.ARCADE); // 2 -- add physics
         console.log('Added physics to game.');
 
-        this.map = this.game.add.tilemap(this.game.meetupLevels[this.game.currentLevel - 1].map);
-        this.map.addTilesetImage(this.game.meetupLevels[this.game.currentLevel - 1].tileset);
+        this.map = this.game.add.tilemap(this.level.map);
+        this.map.addTilesetImage(this.level.tileset);
         this.layer = this.map.createLayer('Floor');
         this.layer.resizeWorld();
 
-        this.detectors = this.game.add.group(); 
+        detectors = this.game.add.group(); 
 
         this.arrowPanels = this.game.add.group();
         this.map.createFromObjects('Arrows', 10, 'arrow', null, true, false, this.arrowPanels, Panel, true);
@@ -548,39 +652,27 @@ Play.prototype = {
            panel.addDirections(panel.directions);
         });
 
-        this.player = new Player(this.game, 96, 96);
-        console.log('Added player to game.');
-        console.log(this.player);
+        this.players = this.game.add.group();
+        this.map.createFromObjects('Players', 9, null, null, true, false, this.players, Player, false);
+        this.players.forEach(function (player) {
+           detectors.add(player.detector);
+        });
 
-        this.game.add.existing(this.player);
+        this.enemies = this.game.add.group();
+        this.map.createFromObjects('Enemies', 11, null, null, true, false, this.enemies, BasicEnemy, false);
+        this.enemies.forEach(function (enemy) {
+           detectors.add(enemy.detector);
+        });
 
-        this.detectors.add(this.player.detector);
-        console.log(this.detectors);
+        this.music = this.game.add.audio('forest_melody');
+        this.music.play();
 
-        this.playerTwo = new Player(this.game, 736, 480);
-        console.log('Added player to game.');
-        console.log(this.player);
-
-        this.game.add.existing(this.playerTwo);
-
-        this.detectors.add(this.playerTwo.detector);
-        console.log(this.detectors);
-
-        this.enemy = new BasicEnemy(this.game, 352, 480);
-        console.log('Added enemy to game.');
-        console.log(this.enemy);
-
-        this.game.add.existing(this.enemy);
-
-        this.detectors.add(this.enemy.detector);
-        console.log(this.detectors);
-
+        
 	    },
 	update: function () {
-        this.game.physics.arcade.overlap(this.detectors, this.arrowPanels, this.shareBehaviours, null, this);
-        this.game.physics.arcade.collide(this.player, this.playerTwo, this.levelClear, null, this);
-        this.game.physics.arcade.collide(this.player, this.enemy, this.levelFail, null, this);
-        this.game.physics.arcade.collide(this.playerTwo, this.enemy, this.levelFail, null, this);
+        this.game.physics.arcade.overlap(detectors, this.arrowPanels, this.shareBehaviours, null, this);
+        this.game.physics.arcade.collide(this.players, this.players, this.levelClear, null, this);
+        this.game.physics.arcade.collide(this.players, this.enemies, this.levelFail, null, this);
 	},
 
     shareBehaviours: function (detector, panel) {
@@ -590,17 +682,19 @@ Play.prototype = {
     },
 
     levelClear: function (playerOne, playerTwo) {
+        this.music.stop();
         this.game.state.start('success');
     },
 
     levelFail: function (player, enemy) {
+        this.music.stop();
         this.game.state.start('play');
     }
 };
 
 module.exports = Play;
 
-},{"../prefabs/basicEnemy":4,"../prefabs/panel":5,"../prefabs/player":6}],11:[function(require,module,exports){
+},{"../prefabs/basicEnemy":4,"../prefabs/panel":6,"../prefabs/player":7}],12:[function(require,module,exports){
 'use strict';
 
 // * move to Menu after assets have been loaded.
@@ -622,24 +716,35 @@ Preload.prototype = {
         this.asset.anchor.setTo(0.5, 0.5);
         this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
         this.load.setPreloadSprite(this.asset);
-
+        
+        // load menu screen objects
         this.load.image('menu_background', 'assets/textures/menu_screen_background.png');
         this.load.image('menu_title', 'assets/textures/game_title.png');
         this.load.image('menu_play_button', 'assets/textures/menu_screen_button.png');
         this.load.image('menu_help_button', 'assets/textures/menu_screen_help_button.png');
 
+        // load level menu screen objects
         this.load.image('level_menu_bg', 'assets/level_menu_background.png');
         this.load.image('level_menu_btn', 'assets/level_menu_button.png');
 
         this.load.tilemap('meetup_map', 'assets/tilemaps/meetup_game.json', null, Phaser.Tilemap.TILED_JSON);
         this.load.tilemap('meetup_map_2', 'assets/tilemaps/meetup_game_2.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.tilemap('meetup_map_3', 'assets/tilemaps/meetup_game_3.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.tilemap('meetup_map_4', 'assets/tilemaps/meetup_game_4.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.tilemap('meetup_map_5', 'assets/tilemaps/meetup_game_5.json', null, Phaser.Tilemap.TILED_JSON);
         this.load.image('blue', 'assets/textures/blue.png');
         this.load.image('detector', 'assets/textures/detector.png');
         this.load.image('meetup_tileset', 'assets/textures/tileset.png');
 
+        // load UI buttons
         this.load.image('menu_button', 'assets/textures/to_main_menu.png');
+        this.load.image('level_menu_button', 'assets/textures/to_level_menu.png');
         this.load.image('next_button', 'assets/textures/to_next_level.png');
         this.load.image('previous_button', 'assets/textures/to_previous_level.png');
+        this.load.image('continue_button', 'assets/textures/continue_button.png');
+        this.load.image('exit_button', 'assets/textures/exit_button.png');
+        this.load.image('pause_button', 'assets/textures/pause_button.png');
+        this.load.image('replay_button', 'assets/textures/replay_button.png');
 
         this.load.image('level_one', 'assets/textures/level_one.png');
         this.load.image('level_two', 'assets/textures/level_two.png');
@@ -648,6 +753,10 @@ Preload.prototype = {
         this.load.spritesheet('player_one', 'assets/textures/player_one.png', 64, 64, 32);
         
         this.load.spritesheet('basic_enemy', 'assets/textures/basic_enemy.png', 64, 64, 28);
+
+        this.load.audio('forest_melody', ['assets/music/forest_melody.mp3', 'assets/music/forest_melody.ogg']);
+        this.load.audio('arrow', 'assets/sound/arrow.ogg');
+        this.load.audio('button', 'assets/sound/button.ogg');
 	    },
 	create: function () {
 		this.asset.cropEnabled = false;
@@ -664,7 +773,7 @@ Preload.prototype = {
 
 module.exports = Preload;
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 function Success() {
@@ -676,20 +785,24 @@ Success.prototype = {
 
 	},
 	create: function () {
-		this.nextButton = this.game.add.button(192, 128, 'next_button', this.nextLevel, this);
-		this.previousButton = this.game.add.button(640, 128, 'previous_button', this.previousLevel, this);
-		this.menuButton = this.game.add.button(384, 384, 'menu_button', this.mainMenu, this);
+		this.game.add.sprite(0, 0, 'level_menu_bg');
+		this.nextButton = this.game.add.button(552, 288, 'next_button', this.nextLevel, this);
+		this.menuButton = this.game.add.button(416, 384, 'menu_button', this.mainMenu, this);
+		this.levelMenuButton = this.game.add.button(416, 288, 'level_menu_button', this.levelMenu, this);
+		this.replayButton = this.game.add.button(280, 288, 'replay_button', this.currentLevel, this);
 	},
 	update: function () {
 		
 	},
 	nextLevel: function () {
-		this.game.currentLevel += 1;
+		this.game.chapters[this.game.currentChapter].currentLevel += 1;
 		this.game.state.start('play');
 	},
-	previousLevel: function () {
-		this.game.currentLevel -= 1;
+	currentLevel: function () {
 		this.game.state.start('play');
+	},
+	levelMenu: function () {
+		this.game.state.start('level-menu');
 	},
 	mainMenu: function () {
 		this.game.state.start('menu');

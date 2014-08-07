@@ -18,12 +18,16 @@ Menu.prototype = {
 		this.startButton.anchor.setTo(0.5, 0.5);
 		this.helpButton = this.game.add.button(this.game.width / 2, 384, 'menu_help_button', this.helpClick, this);
 		this.helpButton.anchor.setTo(0.5, 0.5);
+
+		this.buttonSfx = this.game.add.audio('button');
 	},
 	startClick: function () {
+		this.buttonSfx.play();
 		console.log('Menu click.');
-		this.game.state.start('play');
+		this.game.state.start('level-menu');
 	},
 	helpClick: function () {
+		this.buttonSfx.play();
 		console.log('Help click.');
 	},
 	update: function () {
